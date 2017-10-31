@@ -102,11 +102,8 @@
 <li>S矩阵的主对角线上面是表示的维度本身的方差,主对角线上面的值对应了维度的能量，这个对应了去冗余这步</li>
 <li>其余位置表示的是两不同维度间的相关性，这可以从<strong>1</strong>中向量积看出，在这些位置中的值要尽可能小，达到降噪的目的</li>
 </ul>
-<p>所以要解决上述问题，我们需要找个一矩阵P，使得A经过P矩阵的变化后，S主对角线上面的值尽可能大，非主对角线上面的值为0 ,即为对角矩阵\(\Lambda\)</p>
-<script type="math/tex; mode=display">
-\Lambda = \frac{1} {m}(AP)^T(AP)=P^T(\frac{1} {m}A^T A)P=P^T S P</script><p>因为协方差矩阵S是实对称矩阵，所以其特征值分解有如下性质</p>
-<script type="math/tex; mode=display">
-\Lambda = Q^{-1} S Q</script><p>Q为正交矩阵满足\(Q*Q^T = I\)</p>
+<p>所以要解决上述问题，我们需要找个一矩阵P，使得A经过P矩阵的变化后，S主对角线上面的值尽可能大，非主对角线上面的值为0 ,即为对角矩阵\(\Lambda\)<br>$$<br>\Lambda = \frac{1} {m}(AP)^T(AP)=P^T(\frac{1} {m}A^T A)P=P^T S P<br>$$</p>
+<p>因为协方差矩阵S是实对称矩阵，所以其特征值分解有如下性质<br>$$<br>\Lambda = Q^{-1} S Q<br>$$<br>Q为正交矩阵满足\(Q*Q^T = I\)</p>
 <p>所以对S进行分解即可以求解P</p>
 
       
@@ -150,6 +147,23 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

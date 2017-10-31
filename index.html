@@ -79,7 +79,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2017/10/29/Covariance matrix/IMG_6293.JPG" alt="楼下的猫猫"></p>
+        <hr>
+<p><img src="/2017/10/29/Covariance matrix/楼下的猫猫.JPG" alt="楼下的猫猫"></p>
 <h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3><p>每次都要忘记这些东西所以记下来==</p>
 <p>对于向量 <strong>a</strong> 和 <strong>b</strong> ,向量乘积定义为:<img src="/2017/10/29/Covariance matrix/27A466BF-B714-4F71-9718-D892C69191CA.png" alt=""></p>
 <p>向量内积的几何解释就是一个向量在另一个向量上的投影的积，也就是同方向的积</p>
@@ -90,7 +91,7 @@
 <li>对每个维度的数据进行中心化</li>
 <li>求解协方差矩阵 <img src="/2017/10/29/Covariance matrix/AB84F733-5881-4B2C-8FE7-BE2099965DA2.png" alt=""></li>
 <li>利用算法求解出特征值和特征向量，取特征值最大的K个特征向量构成矩阵W</li>
-<li><img src="/2017/10/29/Covariance matrix/0019B688-8129-4EF2-B87A-3ABAF7228268.png" alt="0019B688-8129-4EF2-B87A-3ABAF7228268">Z为新的样本数据</li>
+<li><img src="/2017/10/29/Covariance matrix/0019B688-8129-4EF2-B87A-3ABAF7228268.png" alt="">Z为新的样本数据</li>
 </ul>
 <h4 id="2-2-如何理解这一过程的原理"><a href="#2-2-如何理解这一过程的原理" class="headerlink" title="2.2.如何理解这一过程的原理"></a>2.2.如何理解这一过程的原理</h4><p><a href="https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html" target="_blank" rel="external">参考文档</a><a href="https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html" target="_blank" rel="external">https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html</a></p>
 <p>降低维度其实主要通过两个角度：</p>
@@ -102,11 +103,11 @@
 <li>S矩阵的主对角线上面是表示的维度本身的方差,主对角线上面的值对应了维度的能量，这个对应了去冗余这步</li>
 <li>其余位置表示的是两不同维度间的相关性，这可以从<strong>1</strong>中向量积看出，在这些位置中的值要尽可能小，达到降噪的目的</li>
 </ul>
-<p>所以要解决上述问题，我们需要找个一矩阵P，使得A经过P矩阵的变化后，S主对角线上面的值尽可能大，非主对角线上面的值为0 ,即为对角矩阵<img src="/2017/10/29/Covariance matrix/66350F53-03C4-475F-B4B6-11E97AE8F471.png" alt="66350F53-03C4-475F-B4B6-11E97AE8F471"></p>
-<p><img src="/2017/10/29/Covariance matrix/F9CF233E-F1FA-421E-AB0F-612252E3A906.png" alt="F9CF233E-F1FA-421E-AB0F-612252E3A906"></p>
+<p>所以要解决上述问题，我们需要找个一矩阵P，使得A经过P矩阵的变化后，S主对角线上面的值尽可能大，非主对角线上面的值为0 ,即为对角矩阵<img src="/2017/10/29/Covariance matrix/66350F53-03C4-475F-B4B6-11E97AE8F471.png" alt=""></p>
+<p><img src="/2017/10/29/Covariance matrix/F9CF233E-F1FA-421E-AB0F-612252E3A906.png" alt=""></p>
 <p>因为协方差矩阵S是实对称矩阵，所以其特征值分解有如下性质</p>
-<p><img src="/2017/10/29/Covariance matrix/5583E423-CA73-43B5-AA42-E5F9A1967EC9.png" alt="5583E423-CA73-43B5-AA42-E5F9A1967EC9"></p>
-<p>Q为正交矩阵满足 <img src="/2017/10/29/Covariance matrix/9A78E778-4C01-4AE1-9411-E461D3DB9E39.png" alt="9A78E778-4C01-4AE1-9411-E461D3DB9E39"></p>
+<p><img src="/2017/10/29/Covariance matrix/5583E423-CA73-43B5-AA42-E5F9A1967EC9.png" alt=""></p>
+<p>Q为正交矩阵满足 <img src="/2017/10/29/Covariance matrix/9A78E778-4C01-4AE1-9411-E461D3DB9E39.png" alt=""></p>
 <p>所以对S进行分解即可以求解P</p>
 
       

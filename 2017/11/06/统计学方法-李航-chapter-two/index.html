@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>统计学方法-chapter two - Meixiuxiu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一些最近感想 今年是我以第一次接触lol,虽然我不玩这个游戏，但是我觉得总决赛看起来还是很精彩，很感动。决赛是ssg vs skt, 霸主skt输了，最后skt中单faker哭了。全场看下来，skt基本上faker一个人carry,  赛后采访ssg的选手也说自己一直很努力地在训练。后来了解了下这个选手，真的是要努力有努力，要天赋有天赋。看得出来电子竞技选手都是很辛苦的，都是需要付出，哪怕再有天">
+<meta name="keywords" content="Perceptron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学方法-chapter two">
+<meta property="og:url" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/index.html">
+<meta property="og:site_name" content="Meixiuxiu">
+<meta property="og:description" content="一些最近感想 今年是我以第一次接触lol,虽然我不玩这个游戏，但是我觉得总决赛看起来还是很精彩，很感动。决赛是ssg vs skt, 霸主skt输了，最后skt中单faker哭了。全场看下来，skt基本上faker一个人carry,  赛后采访ssg的选手也说自己一直很努力地在训练。后来了解了下这个选手，真的是要努力有努力，要天赋有天赋。看得出来电子竞技选手都是很辛苦的，都是需要付出，哪怕再有天">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/faker.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/5.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/6.png">
+<meta property="og:updated_time" content="2017-11-06T12:38:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学方法-chapter two">
+<meta name="twitter:description" content="一些最近感想 今年是我以第一次接触lol,虽然我不玩这个游戏，但是我觉得总决赛看起来还是很精彩，很感动。决赛是ssg vs skt, 霸主skt输了，最后skt中单faker哭了。全场看下来，skt基本上faker一个人carry,  赛后采访ssg的选手也说自己一直很努力地在训练。后来了解了下这个选手，真的是要努力有努力，要天赋有天赋。看得出来电子竞技选手都是很辛苦的，都是需要付出，哪怕再有天">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/06/统计学方法-李航-chapter-two/faker.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-统计学方法-李航-chapter-two" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      统计学方法-chapter two
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/11/06/统计学方法-李航-chapter-two/" class="article-date">
+  <time datetime="2017-11-06T11:37:52.000Z" itemprop="datePublished">2017-11-06</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/统计学习方法-李航/">统计学习方法(李航)</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2017/11/06/统计学方法-李航-chapter-two/faker.png" alt="skt-faker"></p>
+<p>一些最近感想</p>
+<p>今年是我以第一次接触lol,虽然我不玩这个游戏，但是我觉得总决赛看起来还是很精彩，很感动。决赛是ssg vs skt, 霸主skt输了，最后skt中单faker哭了。全场看下来，skt基本上faker一个人carry,  赛后采访ssg的选手也说自己一直很努力地在训练。后来了解了下这个选手，真的是要努力有努力，要天赋有天赋。看得出来电子竞技选手都是很辛苦的，都是需要付出，哪怕再有天赋，没有足够后天的努力也是瞎话。付出够多常胜将军也有被你打败的一天，但若你松懈下来，后面的就会追赶上来。</p>
+<p>哎，想想自己，保研后过的像个咸鱼一样，是不是不该这么松懈？至少行动要配得上梦想。</p>
+<p>第二章课后习题比较简单，主要做下关于perceptron 算法的summary </p>
+<p>let’s start.</p>
+<h3 id="1-1-Perceptron"><a href="#1-1-Perceptron" class="headerlink" title="1.1 Perceptron"></a>1.1 Perceptron</h3><p><img src="/2017/11/06/统计学方法-李航-chapter-two/1.png" alt=""></p>
+<p><img src="/2017/11/06/统计学方法-李航-chapter-two/2.png" alt=""></p>
+<p>感知学习的目标就是能够找到一个将训练集正实例点和负实例点分开的超平面。<br>感知学习的costFunction (损失函数)定义为：</p>
+<p><img src="/2017/11/06/统计学方法-李航-chapter-two/5.png" alt=""></p>
+<h3 id="1-2-Perceptron-learning-algorithm"><a href="#1-2-Perceptron-learning-algorithm" class="headerlink" title="1.2 Perceptron learning algorithm"></a>1.2 Perceptron learning algorithm</h3><h4 id="1-2-1原始学习算法"><a href="#1-2-1原始学习算法" class="headerlink" title="1.2.1原始学习算法"></a>1.2.1原始学习算法</h4><p>因为costFunction是凹函数，我们具体采用stochastic gradient descent算法<br>求导得梯度函数：</p>
+<p><img src="/2017/11/06/统计学方法-李航-chapter-two/3.png" alt=""></p>
+<p>关于算法的收敛性:P31</p>
+<h4 id="1-2-2对偶学习算法"><a href="#1-2-2对偶学习算法" class="headerlink" title="1.2.2对偶学习算法"></a>1.2.2对偶学习算法</h4><p>假设w,b初始值都初始化为0，那么最后的w,b值可以写为：</p>
+<p><img src="/2017/11/06/统计学方法-李航-chapter-two/4.png" alt=""></p>
+<p>那么函数就为：</p>
+<p><img src="/2017/11/06/统计学方法-李航-chapter-two/6.png" alt=""></p>
+<p>对偶学习算法只是函数值改变了，算法过程还是和原始学习算法一样</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perceptron/">Perceptron</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/04/统计学方法-李航-chapter-one/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">统计学方法-chapter one&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Meixinyu&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

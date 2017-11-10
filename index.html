@@ -52,6 +52,81 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-统计学方法-李航-chapter-four" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/10/统计学方法-李航-chapter-four/">统计学方法-chapter four</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/11/10/统计学方法-李航-chapter-four/" class="article-date">
+  <time datetime="2017-11-10T03:28:18.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/统计学习方法-李航/">统计学习方法(李航)</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章有点容易让人迷糊，所以打算详细写下</p>
+<h3 id="1-1-朴素贝叶斯的基本公式"><a href="#1-1-朴素贝叶斯的基本公式" class="headerlink" title="1.1 朴素贝叶斯的基本公式"></a>1.1 朴素贝叶斯的基本公式</h3><ul>
+<li><p>X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。</p>
+</li>
+<li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p>
+</li>
+<li><p>朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分布可以写为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/2.png" alt=""></p>
+<p>接下来进行朴素贝叶斯分类的公式推导，计算后验概率分布：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/3.png" alt=""></p>
+<p>将后验概率值最大的类作为x的类输出，根据贝叶斯定理,后验概率可以写为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/7.png" alt=""></p>
+<p>将条件独立时的条件概率分布公式带入后验概率中可以得到</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/8.png" alt=""></p>
+<p>可以看出分母对所有的Y的情况都是相同的，那么我们就是要求得Ck的值使得（2）中的分子值最大</p>
+</li>
+</ul>
+<h3 id="1-2-为什么要后验概率最大化来求得x的类输出"><a href="#1-2-为什么要后验概率最大化来求得x的类输出" class="headerlink" title="1.2 为什么要后验概率最大化来求得x的类输出"></a>1.2 为什么要后验概率最大化来求得x的类输出</h3><p>我们要求得x的类，使得期望风险最小化，截图书中的证明<img src="/2017/11/10/统计学方法-李航-chapter-four/4.png" alt=""></p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/5.png" alt=""></p>
+<h3 id="1-3-朴素贝叶斯的参数估计"><a href="#1-3-朴素贝叶斯的参数估计" class="headerlink" title="1.3 朴素贝叶斯的参数估计"></a>1.3 朴素贝叶斯的参数估计</h3><p>我们已经求出来朴素贝叶斯的公式，那么如何对(2)式中的分子求值然后进行比较呢？参数估计采用了极大似然的方法，首先对P(Y = Ck)进行极大似然估计，在之前就有了解过极大似然法求值，那么对于这样的多分类问题说，其实方法差不多，对于每一个类我们假设概率为p，那么当前类的概率为p,其他类的概率为(1-p)，这样同理之前的问题，就转化为当前类求最大值，求导即可以求得最大值，这样就可以结局4.1的习题。先验概率的极大似然估计为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/9.png" alt=""></p>
+<p>同理可以得到条件概率的极大似然估计是 (其中第j个特征，可能的取值的集合为ajt, t在为第j个特征的取值个数)：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/10.png" alt=""></p>
+<h3 id="1-4-避免概率值为0的情况"><a href="#1-4-避免概率值为0的情况" class="headerlink" title="1.4 避免概率值为0的情况"></a>1.4 避免概率值为0的情况</h3><p>极大似然法可能出现概率值为0的情况，其实这个情况我也看的不是很懂呐，如果以后遇见了弄明白了再来好好写写，先把书中的公式截图过来，课后习题4.2的第一问，看了一个博客差不多懂了，第二个搞不明白。。。，所以还是以后会了再来一起写吧。</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/6.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/朴素贝叶斯/">朴素贝叶斯</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-统计学方法-李航-chapter-two" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     

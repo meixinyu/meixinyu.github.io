@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>统计学方法-chapter four - Meixiuxiu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为  朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分">
+<meta name="keywords" content="朴素贝叶斯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学方法-chapter four">
+<meta property="og:url" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/index.html">
+<meta property="og:site_name" content="Meixiuxiu">
+<meta property="og:description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为  朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/7.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/8.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/5.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/9.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/10.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/6.png">
+<meta property="og:updated_time" content="2017-11-10T05:31:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学方法-chapter four">
+<meta name="twitter:description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为  朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-统计学方法-李航-chapter-four" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      统计学方法-chapter four
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/11/10/统计学方法-李航-chapter-four/" class="article-date">
+  <time datetime="2017-11-10T03:28:18.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/统计学习方法-李航/">统计学习方法(李航)</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章有点容易让人迷糊，所以打算详细写下</p>
+<h3 id="1-1-朴素贝叶斯的基本公式"><a href="#1-1-朴素贝叶斯的基本公式" class="headerlink" title="1.1 朴素贝叶斯的基本公式"></a>1.1 朴素贝叶斯的基本公式</h3><ul>
+<li><p>X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。</p>
+</li>
+<li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p>
+</li>
+<li><p>朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分布可以写为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/2.png" alt=""></p>
+<p>接下来进行朴素贝叶斯分类的公式推导，计算后验概率分布：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/3.png" alt=""></p>
+<p>将后验概率值最大的类作为x的类输出，根据贝叶斯定理,后验概率可以写为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/7.png" alt=""></p>
+<p>将条件独立时的条件概率分布公式带入后验概率中可以得到</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/8.png" alt=""></p>
+<p>可以看出分母对所有的Y的情况都是相同的，那么我们就是要求得Ck的值使得（2）中的分子值最大</p>
+</li>
+</ul>
+<h3 id="1-2-为什么要后验概率最大化来求得x的类输出"><a href="#1-2-为什么要后验概率最大化来求得x的类输出" class="headerlink" title="1.2 为什么要后验概率最大化来求得x的类输出"></a>1.2 为什么要后验概率最大化来求得x的类输出</h3><p>我们要求得x的类，使得期望风险最小化，截图书中的证明<img src="/2017/11/10/统计学方法-李航-chapter-four/4.png" alt=""></p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/5.png" alt=""></p>
+<h3 id="1-3-朴素贝叶斯的参数估计"><a href="#1-3-朴素贝叶斯的参数估计" class="headerlink" title="1.3 朴素贝叶斯的参数估计"></a>1.3 朴素贝叶斯的参数估计</h3><p>我们已经求出来朴素贝叶斯的公式，那么如何对(2)式中的分子求值然后进行比较呢？参数估计采用了极大似然的方法，首先对P(Y = Ck)进行极大似然估计，在之前就有了解过极大似然法求值，那么对于这样的多分类问题说，其实方法差不多，对于每一个类我们假设概率为p，那么当前类的概率为p,其他类的概率为(1-p)，这样同理之前的问题，就转化为当前类求最大值，求导即可以求得最大值，这样就可以结局4.1的习题。先验概率的极大似然估计为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/9.png" alt=""></p>
+<p>同理可以得到条件概率的极大似然估计是 (其中第j个特征，可能的取值的集合为ajt, t在为第j个特征的取值个数)：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/10.png" alt=""></p>
+<h3 id="1-4-避免概率值为0的情况"><a href="#1-4-避免概率值为0的情况" class="headerlink" title="1.4 避免概率值为0的情况"></a>1.4 避免概率值为0的情况</h3><p>极大似然法可能出现概率值为0的情况，其实这个情况我也看的不是很懂呐，如果以后遇见了弄明白了再来好好写写，先把书中的公式截图过来，课后习题4.2的第一问，看了一个博客差不多懂了，第二个搞不明白。。。，所以还是以后会了再来一起写吧。</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/6.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/朴素贝叶斯/">朴素贝叶斯</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/06/统计学方法-李航-chapter-two/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">统计学方法-chapter two&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Meixinyu&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

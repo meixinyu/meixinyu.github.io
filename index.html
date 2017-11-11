@@ -82,44 +82,11 @@
         <p>这一章的内容比较新吧，之前在西瓜书上面看过决策树，但在这章还是有很多新东西，所以要好好总结下。同时也温习下内容。</p>
 <p>每次写博客最不喜欢写公式了，看了几个博客也没能让hexo完美支持数学公式，所以写了公式然后截图，博客还很简陋，有时间再搭下，加点功能…</p>
 <h3 id="1-1-特征选择"><a href="#1-1-特征选择" class="headerlink" title="1.1 特征选择"></a>1.1 特征选择</h3><p>在每一个非叶节点都是针对特征的一个判断，那么在每个非叶节点的特征选择就成为了一个需要考虑的问题。通常特征选择的准则是信息增益或者信息增益比。下面介绍信息增益和信息增益比。<br>在介绍信息增益和信息增益比之前需要介绍下熵和条件熵，熵(entropy)是表示随机变量不确定性的度量。设X是一个取有限个值的离散随机变量，其概率分布为：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/7.png" alt=""></p>
-<p>则随机变量X的熵(entropy)定义为,单位通常为bit(nat)：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/8.png" alt=""></p>
-<p>条件熵H(Y|X),表示为在X确定的情况下随机变量Y的不确定性(熵)，N为X的取值个数，pi表示当前值的概率,通常采用极大似然法进行估计:<br><img src="/2017/11/11/统计学方法-李航-chapter-five/9.png" alt=""></p>
-<p>①信息增益：现在给出信息增益(information gain)的定义,信息增益表示得知特征X的信息而使得类Y的信息的不确定性减少的程度,公式如下，D为数据集，A为特征：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/10.png" alt=""></p>
-<p>②信息增益比: 公式如下：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/11.png" alt=""></p>
-<p>从而我们可以知道每次特征的选取，我们就选取使得信息增益或者是信息增益比最大的特征。</p>
-<h3 id="1-2-决策树的生成算法"><a href="#1-2-决策树的生成算法" class="headerlink" title="1.2 决策树的生成算法"></a>1.2 决策树的生成算法</h3><p>其实知道如何选取特征之后，决策树的生成其实就很简单了，截图书中的算法</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/1.png" alt=""></p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/2.png" alt=""></p>
-<p>只是在判断叶子节点的类别时，需要注意下叶子节点的类别是叶子节点最多的类，如果把信息增益换成是信息增益比那么久是C4.5算法</p>
-<h3 id="1-3-决策树的剪枝"><a href="#1-3-决策树的剪枝" class="headerlink" title="1.3 决策树的剪枝"></a>1.3 决策树的剪枝</h3><p>决策树有一个很明显的问题就是可能存在过拟合的情况，过拟合就是树太大了，之前在看过的资料中都是通过加上regularization项，其实这里和之前看的都差不多思想。避免过拟合问题主要通过树的剪枝实现，这个剪枝和acm不太一样呢，<del>~~(&gt;_&lt;)</del>~~<br>为避免过拟合加上的regularization项的loss(cost) function为：<br>其中树T的叶节点个数为|T|,t是树的叶节点，叶节点有Nt个样本点, k(范围为1~K)类的样本点有Ntk，α为一个自定义常数参数</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/12.png" alt=""></p>
-<p>利用极大似然估计我们给出叶节点t上的熵为:</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/13.png" alt=""></p>
-<p>这样我们决定一个子树要不要被去掉那么，就通过比较去掉前后的cost function来决定要不要剪枝，利用递归好像就可以实现，可以通过动态规划的方法实现局部进行，没有深究，如果以后以后要写的话，再来好好看看要怎么弄吧。</p>
-<h3 id="1-4-CART-classification-and-regression-tree-算法"><a href="#1-4-CART-classification-and-regression-tree-算法" class="headerlink" title="1.4 CART(classification and regression tree)算法"></a>1.4 CART(classification and regression tree)算法</h3><h4 id="1-4-1-CART的生成"><a href="#1-4-1-CART的生成" class="headerlink" title="1.4.1 CART的生成"></a>1.4.1 CART的生成</h4><p>1.回归树的生成<br>假设X和Y分别为输入和输出变量，Y是连续变量，给定训练集:</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/14.png" alt=""></p>
-<p>对于一个回归树的特征空间的每一个被划分的单元，我们假设已经将特征空间分为M个单元，R1….Rm….RM，每个单元的输出值为cm，于是我们将回归树模型表示为：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/15.png" alt=""></p>
-<p>如何选择最优特征和值，不想打公式了，截个图</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/3.png" alt=""></p>
-<p>2.分类树的生成<br>其实分类树的生成和ID13算法差不多，只是不采用信息增益的方法而是采用了基尼指数的方法去选取特征。<br>定义基尼指数：(又要截图了。。。。)<br><img src="/2017/11/11/统计学方法-李航-chapter-five/4.png" alt=""><br><img src="/2017/11/11/统计学方法-李航-chapter-five/5.png" alt=""><br>至于生成树的算法其实也和上面的差不多。</p>
-<h4 id="1-4-2-CART剪枝"><a href="#1-4-2-CART剪枝" class="headerlink" title="1.4.2 CART剪枝"></a>1.4.2 CART剪枝</h4><p>个人感觉剪枝这部分还是挺有意思的，其实就是在每一次剪枝的过程中都会生成一个新的树(形成子树序列)，为了去从这其中选取合适的书，采用交叉验证法在独立的验证数据集上面进行测试，感觉CART比前面的ID13会好很多，因为没有在新的数据集上面进行数据的验证感觉还是不行。验证集必须是单独的部分。<br>在剪枝过程中，我们定义子树(子树序列中的一个子树)的cost function为：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/16.png" alt=""></p>
-<p>这里生成的子树序列其实是一整棵树，不是字面上的子树，T0为初始的树，对T0的任意内部节点t,以节点t为单节点树的cost function是：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/17.png" alt=""></p>
-<p>以t为根节点的子树Tt的cost function是：</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/18.png" alt=""></p>
-<p>这个部分比较有意思，随着α的增大我们来看看会有什么事情发生</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/19.png" alt=""></p>
-<p>Tt和t有相同的cost function值，而t的结点减少，因此t比Tt更可取，可以进行剪枝。所以对每一内部结点t计算g(t)，g(t)表示了剪枝后整体cost function减少的程度，在T0中减去最小g(t)的Tt，得到的子树为T1,同时将最小的g(t)设置为α1，T为区间[α1，α2)的最优子树</p>
-<p><img src="/2017/11/11/统计学方法-李航-chapter-five/6.png" alt=""></p>
-<h3 id="1-5习题的讨论"><a href="#1-5习题的讨论" class="headerlink" title="1.5习题的讨论"></a>1.5习题的讨论</h3><p>5.3其实很简单，α确定时我们可以固定的找到α对应的区间，然后可以找到相应的子树，这个子树一定是最优的，因为对应前一个的区间树，还有可以剪枝的点，对应后一个区间的树，又多剪枝了点</p>
-<p>5.4类似5.3</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/11/11/统计学方法-李航-chapter-five/#more">Read More</a>
+          </p>
+        
       
     </div>
     
@@ -173,28 +140,12 @@
 <h3 id="1-1-朴素贝叶斯的基本公式"><a href="#1-1-朴素贝叶斯的基本公式" class="headerlink" title="1.1 朴素贝叶斯的基本公式"></a>1.1 朴素贝叶斯的基本公式</h3><ul>
 <li><p>X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。</p>
 </li>
-<li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p>
-</li>
-<li><p>朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分布可以写为：</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/2.png" alt=""></p>
-<p>接下来进行朴素贝叶斯分类的公式推导，计算后验概率分布：</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/3.png" alt=""></p>
-<p>将后验概率值最大的类作为x的类输出，根据贝叶斯定理,后验概率可以写为：</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/7.png" alt=""></p>
-<p>将条件独立时的条件概率分布公式带入后验概率中可以得到</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/8.png" alt=""></p>
-<p>可以看出分母对所有的Y的情况都是相同的，那么我们就是要求得Ck的值使得（2）中的分子值最大</p>
-</li>
-</ul>
-<h3 id="1-2-为什么要后验概率最大化来求得x的类输出"><a href="#1-2-为什么要后验概率最大化来求得x的类输出" class="headerlink" title="1.2 为什么要后验概率最大化来求得x的类输出"></a>1.2 为什么要后验概率最大化来求得x的类输出</h3><p>我们要求得x的类，使得期望风险最小化，截图书中的证明<img src="/2017/11/10/统计学方法-李航-chapter-four/4.png" alt=""></p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/5.png" alt=""></p>
-<h3 id="1-3-朴素贝叶斯的参数估计"><a href="#1-3-朴素贝叶斯的参数估计" class="headerlink" title="1.3 朴素贝叶斯的参数估计"></a>1.3 朴素贝叶斯的参数估计</h3><p>我们已经求出来朴素贝叶斯的公式，那么如何对(2)式中的分子求值然后进行比较呢？参数估计采用了极大似然的方法，首先对P(Y = Ck)进行极大似然估计，在之前就有了解过极大似然法求值，那么对于这样的多分类问题说，其实方法差不多，对于每一个类我们假设概率为p，那么当前类的概率为p,其他类的概率为(1-p)，这样同理之前的问题，就转化为当前类求最大值，求导即可以求得最大值，这样就可以结局4.1的习题。先验概率的极大似然估计为：</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/9.png" alt=""></p>
-<p>同理可以得到条件概率的极大似然估计是 (其中第j个特征，可能的取值的集合为ajt, t在为第j个特征的取值个数)：</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/10.png" alt=""></p>
-<h3 id="1-4-避免概率值为0的情况"><a href="#1-4-避免概率值为0的情况" class="headerlink" title="1.4 避免概率值为0的情况"></a>1.4 避免概率值为0的情况</h3><p>极大似然法可能出现概率值为0的情况，其实这个情况我也看的不是很懂呐，如果以后遇见了弄明白了再来好好写写，先把书中的公式截图过来，课后习题4.2的第一问，看了一个博客差不多懂了，第二个搞不明白。。。，所以还是以后会了再来一起写吧。</p>
-<p><img src="/2017/11/10/统计学方法-李航-chapter-four/6.png" alt=""></p>
-
+<li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p></li></ul>
+        
+          <p class="article-more-link">
+            <a href="/2017/11/10/统计学方法-李航-chapter-four/#more">Read More</a>
+          </p>
+        
       
     </div>
     
@@ -250,19 +201,11 @@
 <p>哎，想想自己，保研后过的像个咸鱼一样，是不是不该这么松懈？至少行动要配得上梦想。</p>
 <p>第二章课后习题比较简单，主要做下关于perceptron 算法的summary </p>
 <p>let’s start.</p>
-<h3 id="1-1-Perceptron"><a href="#1-1-Perceptron" class="headerlink" title="1.1 Perceptron"></a>1.1 Perceptron</h3><p><img src="/2017/11/06/统计学方法-李航-chapter-two/1.png" alt=""></p>
-<p><img src="/2017/11/06/统计学方法-李航-chapter-two/2.png" alt=""></p>
-<p>感知学习的目标就是能够找到一个将训练集正实例点和负实例点分开的超平面。<br>感知学习的costFunction (损失函数)定义为：</p>
-<p><img src="/2017/11/06/统计学方法-李航-chapter-two/5.png" alt=""></p>
-<h3 id="1-2-Perceptron-learning-algorithm"><a href="#1-2-Perceptron-learning-algorithm" class="headerlink" title="1.2 Perceptron learning algorithm"></a>1.2 Perceptron learning algorithm</h3><h4 id="1-2-1原始学习算法"><a href="#1-2-1原始学习算法" class="headerlink" title="1.2.1原始学习算法"></a>1.2.1原始学习算法</h4><p>因为costFunction是凹函数，我们具体采用stochastic gradient descent算法<br>求导得梯度函数：</p>
-<p><img src="/2017/11/06/统计学方法-李航-chapter-two/3.png" alt=""></p>
-<p>关于算法的收敛性:P31</p>
-<h4 id="1-2-2对偶学习算法"><a href="#1-2-2对偶学习算法" class="headerlink" title="1.2.2对偶学习算法"></a>1.2.2对偶学习算法</h4><p>假设w,b初始值都初始化为0，那么最后的w,b值可以写为：</p>
-<p><img src="/2017/11/06/统计学方法-李航-chapter-two/4.png" alt=""></p>
-<p>那么函数就为：</p>
-<p><img src="/2017/11/06/统计学方法-李航-chapter-two/6.png" alt=""></p>
-<p>对偶学习算法只是函数值改变了，算法过程还是和原始学习算法一样</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/11/06/统计学方法-李航-chapter-two/#more">Read More</a>
+          </p>
+        
       
     </div>
     
@@ -316,18 +259,11 @@
 <p>因为第一章比较简单，所以内容上面没什么好总结的，主要写下课后习题</p>
 <p>看见猫猫就开心啊</p>
 <h3 id="1-1极大似然估计"><a href="#1-1极大似然估计" class="headerlink" title="1.1极大似然估计"></a>1.1极大似然估计</h3><p>极大似然估计是用给定的数据来估计模型参数的方法</p>
-<p><a href="http://www.cnblogs.com/liliu/archive/2010/11/22/1883702.html" target="_blank" rel="external">参考文档</a><a href="http://www.cnblogs.com/liliu/archive/2010/11/22/1883702.html" target="_blank" rel="external">http://www.cnblogs.com/liliu/archive/2010/11/22/1883702.html</a></p>
-<p>利用极大似然估计结果为1的概率</p>
-<p>令P为结果为1的概率则<img src="/2017/11/04/统计学方法-李航-chapter-one/1.png" alt=""></p>
-<p>求满足(1)式的最大值，求得P = k/n</p>
-<h3 id="1-2-贝叶斯估计"><a href="#1-2-贝叶斯估计" class="headerlink" title="1.2 贝叶斯估计"></a>1.2 贝叶斯估计</h3><p>P服从B分布</p>
-<p><img src="/2017/11/04/统计学方法-李航-chapter-one/B分布概率密度函数.jpg" alt=""></p>
-<p>来自wiki截图<a href="https://zh.wikipedia.org/wiki/%CE%92%E5%88%86%E5%B8%83" target="_blank" rel="external">https://zh.wikipedia.org/wiki/%CE%92%E5%88%86%E5%B8%83</a></p>
-<p>则求下式最大值</p>
-<p><img src="/2017/11/04/统计学方法-李航-chapter-one/2.png" alt=""></p>
-<p>P  = (k+α-1)/(n+α-1+β-1)</p>
-<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>第二道题很简单,能把1.1中的参考文档看了就行了</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/11/04/统计学方法-李航-chapter-one/#more">Read More</a>
+          </p>
+        
       
     </div>
     
@@ -379,35 +315,12 @@
       
         <hr>
 <p><img src="/2017/10/29/Covariance matrix/楼下的猫猫.JPG" alt="楼下的猫猫"></p>
-<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3><p>每次都要忘记这些东西所以记下来==</p>
-<p>对于向量 <strong>a</strong> 和 <strong>b</strong> ,向量乘积定义为:<img src="/2017/10/29/Covariance matrix/27A466BF-B714-4F71-9718-D892C69191CA.png" alt=""></p>
-<p>向量内积的几何解释就是一个向量在另一个向量上的投影的积，也就是同方向的积</p>
-<p>描述了向量间的相关性</p>
-<h3 id="2-PCA中的协方差矩阵"><a href="#2-PCA中的协方差矩阵" class="headerlink" title="2.PCA中的协方差矩阵"></a>2.PCA中的协方差矩阵</h3><h4 id="2-1-PCA算法"><a href="#2-1-PCA算法" class="headerlink" title="2.1.PCA算法"></a>2.1.PCA算法</h4><p>PCA算法是一种数据降维的算法，通过某种线性投影将高维的数据映射到低维的空间中，以此用比较少的数据维度保留住原数据的特性。</p>
-<p>假设令A为m*n的原数据 ，m为样本数量，n为维度</p>
-<ul>
-<li>对每个维度的数据进行中心化</li>
-<li>求解协方差矩阵 <img src="/2017/10/29/Covariance matrix/AB84F733-5881-4B2C-8FE7-BE2099965DA2.png" alt=""></li>
-<li>利用算法求解出特征值和特征向量，取特征值最大的K个特征向量构成矩阵W</li>
-<li><img src="/2017/10/29/Covariance matrix/0019B688-8129-4EF2-B87A-3ABAF7228268.png" alt="">Z为新的样本数据</li>
-</ul>
-<h4 id="2-2-如何理解这一过程的原理"><a href="#2-2-如何理解这一过程的原理" class="headerlink" title="2.2.如何理解这一过程的原理"></a>2.2.如何理解这一过程的原理</h4><p><a href="https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html" target="_blank" rel="external">参考文档</a><a href="https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html" target="_blank" rel="external">https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html</a></p>
-<p>降低维度其实主要通过两个角度：</p>
-<p>1.降噪，使得维度间的相关性尽可能小</p>
-<p>2.冗余，就是去掉一些多余的维度，假设在某一维度上面，值都一样那么这样的维度没有任何意义，成为冗余，所以我们尽量使得维度本身的方差大</p>
-<p>在了解了降低维度的两个入手点，接下来我们从协方差矩阵自身的特点来看为什么它能够做到这些事情。</p>
-<p>从上述协方差S的公式中我们可以看出</p>
-<ul>
-<li>S矩阵的主对角线上面是表示的维度本身的方差,主对角线上面的值对应了维度的能量，这个对应了去冗余这步</li>
-<li>其余位置表示的是两不同维度间的相关性，这可以从<strong>1</strong>中向量积看出，在这些位置中的值要尽可能小，达到降噪的目的</li>
-</ul>
-<p>所以要解决上述问题，我们需要找个一矩阵P，使得A经过P矩阵的变化后，S主对角线上面的值尽可能大，非主对角线上面的值为0 ,即为对角矩阵<img src="/2017/10/29/Covariance matrix/66350F53-03C4-475F-B4B6-11E97AE8F471.png" alt=""></p>
-<p><img src="/2017/10/29/Covariance matrix/F9CF233E-F1FA-421E-AB0F-612252E3A906.png" alt=""></p>
-<p>因为协方差矩阵S是实对称矩阵，所以其特征值分解有如下性质</p>
-<p><img src="/2017/10/29/Covariance matrix/5583E423-CA73-43B5-AA42-E5F9A1967EC9.png" alt=""></p>
-<p>Q为正交矩阵满足 <img src="/2017/10/29/Covariance matrix/9A78E778-4C01-4AE1-9411-E461D3DB9E39.png" alt=""></p>
-<p>所以对S进行分解即可以求解P</p>
-
+<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3>
+        
+          <p class="article-more-link">
+            <a href="/2017/10/29/Covariance matrix/#more">Read More</a>
+          </p>
+        
       
     </div>
     

@@ -5,13 +5,13 @@
   
   <title>统计学方法-chapter four - Meixiuxiu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为  朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分">
+  <meta name="description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为">
 <meta name="keywords" content="朴素贝叶斯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学方法-chapter four">
 <meta property="og:url" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/index.html">
 <meta property="og:site_name" content="Meixiuxiu">
-<meta property="og:description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为  朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分">
+<meta property="og:description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/2.png">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/9.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/10.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/6.png">
-<meta property="og:updated_time" content="2017-11-10T05:31:20.000Z">
+<meta property="og:updated_time" content="2017-11-11T12:21:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学方法-chapter four">
-<meta name="twitter:description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为  朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分">
+<meta name="twitter:description" content="这一章有点容易让人迷糊，所以打算详细写下 1.1 朴素贝叶斯的基本公式 X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。  先验概率分布，条件概率分布分别为">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/10/统计学方法-李航-chapter-four/1.png">
   
   
@@ -99,6 +99,7 @@
 <li><p>X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。</p>
 </li>
 <li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p>
+<a id="more"></a>
 </li>
 <li><p>朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分布可以写为：</p>
 <p><img src="/2017/11/10/统计学方法-李航-chapter-four/2.png" alt=""></p>

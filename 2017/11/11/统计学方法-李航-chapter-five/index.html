@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/11/统计学方法-李航-chapter-five/18.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/11/统计学方法-李航-chapter-five/19.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/11/统计学方法-李航-chapter-five/6.png">
-<meta property="og:updated_time" content="2017-11-11T12:21:23.000Z">
+<meta property="og:updated_time" content="2017-11-11T14:10:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学方法-chapter five">
 <meta name="twitter:description" content="这一章的内容比较新吧，之前在西瓜书上面看过决策树，但在这章还是有很多新东西，所以要好好总结下。同时也温习下内容。 每次写博客最不喜欢写公式了，看了几个博客也没能让hexo完美支持数学公式，所以写了公式然后截图，博客还很简陋，有时间再搭下，加点功能… 1.1 特征选择在每一个非叶节点都是针对特征的一个判断，那么在每个非叶节点的特征选择就成为了一个需要考虑的问题。通常特征选择的准则是信息增益或者信息增">
@@ -43,11 +43,13 @@
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
   <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <link rel="stylesheet" href="/css/style.css">
   
 
-</head>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("ImAHEPDUTcPakLfndBrcOoKD-gzGzoHsz", "u9JMhMDd0UbR4ob7JBJ2jEQF");</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
+</head>
 <body>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <header id="header">
@@ -141,6 +143,8 @@
 <p>这个部分比较有意思，随着α的增大我们来看看会有什么事情发生</p>
 <p><img src="/2017/11/11/统计学方法-李航-chapter-five/19.png" alt=""></p>
 <p>Tt和t有相同的cost function值，而t的结点减少，因此t比Tt更可取，可以进行剪枝。所以对每一内部结点t计算g(t)，g(t)表示了剪枝后整体cost function减少的程度，在T0中减去最小g(t)的Tt，得到的子树为T1,同时将最小的g(t)设置为α1，T为区间[α1，α2)的最优子树</p>
+<p>为什么αi+1一定是大于 αi ？突然想到了这个</p>
+<p>截图有问题，我看老师也进行了勘误是回到步骤2</p>
 <p><img src="/2017/11/11/统计学方法-李航-chapter-five/6.png" alt=""></p>
 <h3 id="1-5习题的讨论"><a href="#1-5习题的讨论" class="headerlink" title="1.5习题的讨论"></a>1.5习题的讨论</h3><p>5.3其实很简单，α确定时我们可以固定的找到α对应的区间，然后可以找到相应的子树，这个子树一定是最优的，因为对应前一个的区间树，还有可以剪枝的点，对应后一个区间的树，又多剪枝了点</p>
 <p>5.4类似5.3</p>
@@ -159,6 +163,14 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/11/16/统计学方法-李航-chapter-six/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          统计学方法-李航-chapter-six
+        
+      </div>
+    </a>
   
   
     <a href="/2017/11/10/统计学方法-李航-chapter-four/" id="article-nav-older" class="article-nav-link-wrap">
@@ -207,6 +219,91 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+    title = $('.article-title').text().trim();
+    var query=new AV.Query(Counter);
+    //use url as unique idnetfication
+    query.equalTo("url",url);
+    query.find({
+        success: function(results){
+            if(results.length>0)
+            {
+                var counter=results[0];
+                counter.fetchWhenSave(true); //get recent result
+                counter.increment("time");
+                counter.save();
+            }
+            else
+            {
+                var newcounter=new Counter();
+                newcounter.set("title",title);
+                newcounter.set("url",url);
+                newcounter.set("time",1);
+                newcounter.save(null,{
+                    success: function(newcounter){
+                    //alert('New object created');
+                    },
+                    error: function(newcounter,error){
+                    alert('Failed to create');
+                    }
+                    });
+            }
+        },
+        error: function(error){
+            //find null is not a error
+            alert('Error:'+error.code+" "+error.message);
+        }
+    });
+}
+$(function(){
+    var Counter=AV.Object.extend("Counter");
+    //only increse visit counting when intering a page
+    if ($('.article-title').length == 1)
+       addCount(Counter);
+    var query=new AV.Query(Counter);
+    query.descending("time");
+    // the sum of popular posts
+    query.limit(10); 
+    query.find({
+        success: function(results){
+                for(var i=0;i<results.length;i++)    
+                {
+                    var counter=results[i];
+                    title=counter.get("title");
+                    url=counter.get("url");
+                    time=counter.get("time");
+                    // add to the popularlist widget
+                    showcontent=title+" ("+time+")";
+                    //notice the "" in href
+                    $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                }
+            },
+        error: function(error){
+            alert("Error:"+error.code+" "+error.message);
+        }
+        }
+    )
+    });
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

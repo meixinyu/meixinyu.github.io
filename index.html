@@ -73,14 +73,32 @@
   <time datetime="2017-11-16T11:51:17.000Z" itemprop="datePublished">2017-11-16</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/统计学习方法-李航/">统计学习方法(李航)</a>
+  </div>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
+        <p>The way is so far，写博客就是温习回顾，自我检验的一个过程</p>
+<h3 id="1-逻辑斯谛回归模型"><a href="#1-逻辑斯谛回归模型" class="headerlink" title="1. 逻辑斯谛回归模型"></a>1. 逻辑斯谛回归模型</h3><h4 id="1-1-逻辑斯谛分布"><a href="#1-1-逻辑斯谛分布" class="headerlink" title="1.1 逻辑斯谛分布"></a>1.1 逻辑斯谛分布</h4><p>X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：</p>
+<p><img src="/2017/11/16/统计学方法-李航-chapter-six/1.png" alt=""></p>
+<p><img src="/2017/11/16/统计学方法-李航-chapter-six/2.png" alt=""></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/11/16/统计学方法-李航-chapter-six/#more">Read More</a>
+          </p>
         
       
     </div>
     
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic-distribution/">logistic distribution</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最大熵模型/">最大熵模型</a></li></ul>
+
+      </footer>
     
   </div>
   
@@ -357,12 +375,35 @@
       
         <hr>
 <p><img src="/2017/10/29/Covariance matrix/楼下的猫猫.JPG" alt="楼下的猫猫"></p>
-<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3>
-        
-          <p class="article-more-link">
-            <a href="/2017/10/29/Covariance matrix/#more">Read More</a>
-          </p>
-        
+<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3><p>每次都要忘记这些东西所以记下来==</p>
+<p>对于向量 <strong>a</strong> 和 <strong>b</strong> ,向量乘积定义为:<img src="/2017/10/29/Covariance matrix/27A466BF-B714-4F71-9718-D892C69191CA.png" alt=""></p>
+<p>向量内积的几何解释就是一个向量在另一个向量上的投影的积，也就是同方向的积</p>
+<p>描述了向量间的相关性</p>
+<h3 id="2-PCA中的协方差矩阵"><a href="#2-PCA中的协方差矩阵" class="headerlink" title="2.PCA中的协方差矩阵"></a>2.PCA中的协方差矩阵</h3><h4 id="2-1-PCA算法"><a href="#2-1-PCA算法" class="headerlink" title="2.1.PCA算法"></a>2.1.PCA算法</h4><p>PCA算法是一种数据降维的算法，通过某种线性投影将高维的数据映射到低维的空间中，以此用比较少的数据维度保留住原数据的特性。</p>
+<p>假设令A为m*n的原数据 ，m为样本数量，n为维度</p>
+<ul>
+<li>对每个维度的数据进行中心化</li>
+<li>求解协方差矩阵 <img src="/2017/10/29/Covariance matrix/AB84F733-5881-4B2C-8FE7-BE2099965DA2.png" alt=""></li>
+<li>利用算法求解出特征值和特征向量，取特征值最大的K个特征向量构成矩阵W</li>
+<li><img src="/2017/10/29/Covariance matrix/0019B688-8129-4EF2-B87A-3ABAF7228268.png" alt="">Z为新的样本数据</li>
+</ul>
+<h4 id="2-2-如何理解这一过程的原理"><a href="#2-2-如何理解这一过程的原理" class="headerlink" title="2.2.如何理解这一过程的原理"></a>2.2.如何理解这一过程的原理</h4><p><a href="https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html" target="_blank" rel="external">参考文档</a><a href="https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html" target="_blank" rel="external">https://wenku.baidu.com/view/ce7ee04bcc175527072208ca.html</a></p>
+<p>降低维度其实主要通过两个角度：</p>
+<p>1.降噪，使得维度间的相关性尽可能小</p>
+<p>2.冗余，就是去掉一些多余的维度，假设在某一维度上面，值都一样那么这样的维度没有任何意义，成为冗余，所以我们尽量使得维度本身的方差大</p>
+<p>在了解了降低维度的两个入手点，接下来我们从协方差矩阵自身的特点来看为什么它能够做到这些事情。</p>
+<p>从上述协方差S的公式中我们可以看出</p>
+<ul>
+<li>S矩阵的主对角线上面是表示的维度本身的方差,主对角线上面的值对应了维度的能量，这个对应了去冗余这步</li>
+<li>其余位置表示的是两不同维度间的相关性，这可以从<strong>1</strong>中向量积看出，在这些位置中的值要尽可能小，达到降噪的目的</li>
+</ul>
+<p>所以要解决上述问题，我们需要找个一矩阵P，使得A经过P矩阵的变化后，S主对角线上面的值尽可能大，非主对角线上面的值为0 ,即为对角矩阵<img src="/2017/10/29/Covariance matrix/66350F53-03C4-475F-B4B6-11E97AE8F471.png" alt=""></p>
+<p><img src="/2017/10/29/Covariance matrix/F9CF233E-F1FA-421E-AB0F-612252E3A906.png" alt=""></p>
+<p>因为协方差矩阵S是实对称矩阵，所以其特征值分解有如下性质</p>
+<p><img src="/2017/10/29/Covariance matrix/5583E423-CA73-43B5-AA42-E5F9A1967EC9.png" alt=""></p>
+<p>Q为正交矩阵满足 <img src="/2017/10/29/Covariance matrix/9A78E778-4C01-4AE1-9411-E461D3DB9E39.png" alt=""></p>
+<p>所以对S进行分解即可以求解P</p>
+
       
     </div>
     

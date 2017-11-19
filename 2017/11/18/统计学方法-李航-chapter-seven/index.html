@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/20.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/21.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/21.png">
-<meta property="og:updated_time" content="2017-11-19T08:14:10.000Z">
+<meta property="og:updated_time" content="2017-11-19T08:15:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学方法-chapter seven">
 <meta name="twitter:description" content="这一章好难呐，让人怀疑人生，感觉这本书还是要看第二遍的，勤能补拙，这章公式有100多个…. 1. 线性可分支持向量机和硬间隔最大化 函数间隔的定义如下：  ​       定义超平面(w,b)和数据集T的函数间隔为超平面关于所有样本点中函数间隔的最小值。  几何间隔的定义如下：  同理其几何间隔也为最小值。   要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：将几何间隔转变为函数间隔，">
@@ -119,7 +119,8 @@
 <p>同理其几何间隔也为最小值。</p>
 </li>
 </ul>
-<p>要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/3.png" alt=""><br>将几何间隔转变为函数间隔，可以得到<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/4.png" alt=""><br>将w,和b可以同比例的变化，可以看出函数间隔的值对约束问题没有实际影响，所以约束问题可以写为：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/5.png" alt=""><br>接下来证明最大间隔分离超平面是唯一的：<br>①存在性：因为数据集线性可分，所以此问题一定存在可行解，因为训练集中既有正例又有负例，所以w的值一定不为0，所以由此可知分离超平面的存在性。</p>
+<p>要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/3.png" alt=""><br>将几何间隔转变为函数间隔，可以得到<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/4.png" alt=""><br>将w,和b可以同比例的变化，可以看出函数间隔的值对约束问题没有实际影响，所以约束问题可以写为：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/5.png" alt=""><br><a id="more"></a></p>
+<p>接下来证明最大间隔分离超平面是唯一的：<br>①存在性：因为数据集线性可分，所以此问题一定存在可行解，因为训练集中既有正例又有负例，所以w的值一定不为0，所以由此可知分离超平面的存在性。</p>
 <p>②唯一性：证明的方法主要是通过假设有两个这样的超平面然后证明这两个超平面是一样的。而且对于每一个超平面正负点一定有满足7.14的点，因为如果不满足超平面就不是最优的，超平面可以一定。<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/6.png" alt=""></p>
 <p>满足7.14式等号成立的点就为支持向量。<br>接下来将7.13，7.14的约束问题转化为无约束问题，对偶学习算法，通过拉格朗日乘子，可以将约束问题转化为无优化问题,先对非拉格朗日乘子求偏导,然后带入进去，再对函数求极小值，公式如下：</p>
 <p><img src="/2017/11/18/统计学方法-李航-chapter-seven/7.png" alt=""></p>

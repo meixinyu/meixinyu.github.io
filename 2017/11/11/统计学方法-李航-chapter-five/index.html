@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/11/统计学方法-李航-chapter-five/18.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/11/统计学方法-李航-chapter-five/19.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/11/统计学方法-李航-chapter-five/6.png">
-<meta property="og:updated_time" content="2017-11-16T15:42:06.000Z">
+<meta property="og:updated_time" content="2017-11-19T08:36:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学方法-chapter five">
 <meta name="twitter:description" content="这一章的内容比较新吧，之前在西瓜书上面看过决策树，但在这章还是有很多新东西，所以要好好总结下。同时也温习下内容。 每次写博客最不喜欢写公式了，看了几个博客也没能让hexo完美支持数学公式，所以写了公式然后截图，博客还很简陋，有时间再搭下，加点功能… 1.1 特征选择在每一个非叶节点都是针对特征的一个判断，那么在每个非叶节点的特征选择就成为了一个需要考虑的问题。通常特征选择的准则是信息增益或者信息增">
@@ -108,11 +108,11 @@
         <p>这一章的内容比较新吧，之前在西瓜书上面看过决策树，但在这章还是有很多新东西，所以要好好总结下。同时也温习下内容。</p>
 <p>每次写博客最不喜欢写公式了，看了几个博客也没能让hexo完美支持数学公式，所以写了公式然后截图，博客还很简陋，有时间再搭下，加点功能…</p>
 <h3 id="1-1-特征选择"><a href="#1-1-特征选择" class="headerlink" title="1.1 特征选择"></a>1.1 特征选择</h3><p>在每一个非叶节点都是针对特征的一个判断，那么在每个非叶节点的特征选择就成为了一个需要考虑的问题。通常特征选择的准则是信息增益或者信息增益比。下面介绍信息增益和信息增益比。<br>在介绍信息增益和信息增益比之前需要介绍下熵和条件熵，熵(entropy)是表示随机变量不确定性的度量。设X是一个取有限个值的离散随机变量，其概率分布为：</p>
-<a id="more"></a>
 <p><img src="/2017/11/11/统计学方法-李航-chapter-five/7.png" alt=""></p>
 <p>则随机变量X的熵(entropy)定义为,单位通常为bit(nat)：</p>
 <p><img src="/2017/11/11/统计学方法-李航-chapter-five/8.png" alt=""></p>
 <p>条件熵H(Y|X),表示为在X确定的情况下随机变量Y的不确定性(熵)，N为X的取值个数，pi表示当前值的概率,通常采用极大似然法进行估计:<br><img src="/2017/11/11/统计学方法-李航-chapter-five/9.png" alt=""></p>
+<a id="more"></a>
 <p>①信息增益：现在给出信息增益(information gain)的定义,信息增益表示得知特征X的信息而使得类Y的信息的不确定性减少的程度,公式如下，D为数据集，A为特征：</p>
 <p><img src="/2017/11/11/统计学方法-李航-chapter-five/10.png" alt=""></p>
 <p>②信息增益比: 公式如下：</p>

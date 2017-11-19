@@ -5,13 +5,13 @@
   
   <title>统计学方法-chapter six - Meixiuxiu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The way is so far，写博客就是温习回顾，自我检验的一个过程 1. 逻辑斯谛回归模型1.1 逻辑斯谛分布X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：">
+  <meta name="description" content="The way is so far，写博客就是温习回顾，自我检验的一个过程 1. 逻辑斯谛回归模型1.1 逻辑斯谛分布X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：   1.2 二项逻辑斯谛回归模型二项逻辑斯谛回归模型的条件概率分布如下： 可以将b加入到w向量中，加以扩充，一个事件的几率（odds）是指该事件发生的概率和该事件不发生的概率的比值，该事件的对数几率是 对于二项逻辑斯谛回归而言">
 <meta name="keywords" content="logistic distribution,最大熵模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学方法-chapter six">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/index.html">
 <meta property="og:site_name" content="Meixiuxiu">
-<meta property="og:description" content="The way is so far，写博客就是温习回顾，自我检验的一个过程 1. 逻辑斯谛回归模型1.1 逻辑斯谛分布X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：">
+<meta property="og:description" content="The way is so far，写博客就是温习回顾，自我检验的一个过程 1. 逻辑斯谛回归模型1.1 逻辑斯谛分布X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：   1.2 二项逻辑斯谛回归模型二项逻辑斯谛回归模型的条件概率分布如下： 可以将b加入到w向量中，加以扩充，一个事件的几率（odds）是指该事件发生的概率和该事件不发生的概率的比值，该事件的对数几率是 对于二项逻辑斯谛回归而言">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/2.png">
@@ -37,10 +37,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/22.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/23.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/24.png">
-<meta property="og:updated_time" content="2017-11-16T15:43:49.000Z">
+<meta property="og:updated_time" content="2017-11-19T08:36:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学方法-chapter six">
-<meta name="twitter:description" content="The way is so far，写博客就是温习回顾，自我检验的一个过程 1. 逻辑斯谛回归模型1.1 逻辑斯谛分布X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：">
+<meta name="twitter:description" content="The way is so far，写博客就是温习回顾，自我检验的一个过程 1. 逻辑斯谛回归模型1.1 逻辑斯谛分布X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：   1.2 二项逻辑斯谛回归模型二项逻辑斯谛回归模型的条件概率分布如下： 可以将b加入到w向量中，加以扩充，一个事件的几率（odds）是指该事件发生的概率和该事件不发生的概率的比值，该事件的对数几率是 对于二项逻辑斯谛回归而言">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/16/统计学方法-李航-chapter-six/1.png">
   
   
@@ -114,10 +114,9 @@
 <h3 id="1-逻辑斯谛回归模型"><a href="#1-逻辑斯谛回归模型" class="headerlink" title="1. 逻辑斯谛回归模型"></a>1. 逻辑斯谛回归模型</h3><h4 id="1-1-逻辑斯谛分布"><a href="#1-1-逻辑斯谛分布" class="headerlink" title="1.1 逻辑斯谛分布"></a>1.1 逻辑斯谛分布</h4><p>X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：</p>
 <p><img src="/2017/11/16/统计学方法-李航-chapter-six/1.png" alt=""></p>
 <p><img src="/2017/11/16/统计学方法-李航-chapter-six/2.png" alt=""></p>
-<a id="more"></a>
 <h4 id="1-2-二项逻辑斯谛回归模型"><a href="#1-2-二项逻辑斯谛回归模型" class="headerlink" title="1.2 二项逻辑斯谛回归模型"></a>1.2 二项逻辑斯谛回归模型</h4><p>二项逻辑斯谛回归模型的条件概率分布如下：</p>
 <p><img src="/2017/11/16/统计学方法-李航-chapter-six/3.png" alt=""><br>可以将b加入到w向量中，加以扩充，一个事件的几率（odds）是指该事件发生的概率和该事件不发生的概率的比值，该事件的对数几率是</p>
-<p><img src="/2017/11/16/统计学方法-李航-chapter-six/4.png" alt=""><br>对于二项逻辑斯谛回归而言，其对数几率为：</p>
+<p><img src="/2017/11/16/统计学方法-李航-chapter-six/4.png" alt=""><br>对于二项逻辑斯谛回归而言，其对数几率为：<br><a id="more"></a></p>
 <p><img src="/2017/11/16/统计学方法-李航-chapter-six/5.png" alt=""><br>通过6.4式可以将线性函数w*x转化为概率6.4的形式，线性函数的值接近正无穷，概率值就越接近1。<br>对于逻辑斯谛回归模型的参数估计，可以用极大似然估计模型参数,设：<br><img src="/2017/11/16/统计学方法-李航-chapter-six/6.png" alt=""><br>似然函数为：<br><img src="/2017/11/16/统计学方法-李航-chapter-six/7.png" alt=""><br>对数似然函数为：<br><img src="/2017/11/16/统计学方法-李航-chapter-six/8.png" alt=""><br>对L(w)求极大值，就得到w的估计值<br><img src="/2017/11/16/统计学方法-李航-chapter-six/9.png" alt=""></p>
 <h3 id="2-1-最大熵模型"><a href="#2-1-最大熵模型" class="headerlink" title="2.1 最大熵模型"></a>2.1 最大熵模型</h3><h4 id="2-1-1最大熵原理"><a href="#2-1-1最大熵原理" class="headerlink" title="2.1.1最大熵原理"></a>2.1.1最大熵原理</h4><p>最大熵原理：学习概率模型时，在所有可能的概率模型中，熵最大的模型时最好的模型。最大熵原理认为，在满足约束条件的情况下，在没有更多信息的情况下，那些不确定的部分都是等可能的。最大熵原理通过熵的最大化来表示等可能性。<br><img src="/2017/11/16/统计学方法-李航-chapter-six/10.png" alt=""></p>
 <h4 id="2-1-2-最大熵模型"><a href="#2-1-2-最大熵模型" class="headerlink" title="2.1.2 最大熵模型"></a>2.1.2 最大熵模型</h4><p>特征函数f(x,y)，描述x,y之间的某一个事实，其定义是<br><img src="/2017/11/16/统计学方法-李航-chapter-six/11.png" alt=""><br><img src="/2017/11/16/统计学方法-李航-chapter-six/12.png" alt=""></p>

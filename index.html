@@ -151,6 +151,9 @@
 <h3 id="1-逻辑斯谛回归模型"><a href="#1-逻辑斯谛回归模型" class="headerlink" title="1. 逻辑斯谛回归模型"></a>1. 逻辑斯谛回归模型</h3><h4 id="1-1-逻辑斯谛分布"><a href="#1-1-逻辑斯谛分布" class="headerlink" title="1.1 逻辑斯谛分布"></a>1.1 逻辑斯谛分布</h4><p>X服从逻辑斯谛分布是指，满足下面的分布函数和密度函数：</p>
 <p><img src="/2017/11/16/统计学方法-李航-chapter-six/1.png" alt=""></p>
 <p><img src="/2017/11/16/统计学方法-李航-chapter-six/2.png" alt=""></p>
+<h4 id="1-2-二项逻辑斯谛回归模型"><a href="#1-2-二项逻辑斯谛回归模型" class="headerlink" title="1.2 二项逻辑斯谛回归模型"></a>1.2 二项逻辑斯谛回归模型</h4><p>二项逻辑斯谛回归模型的条件概率分布如下：</p>
+<p><img src="/2017/11/16/统计学方法-李航-chapter-six/3.png" alt=""><br>可以将b加入到w向量中，加以扩充，一个事件的几率（odds）是指该事件发生的概率和该事件不发生的概率的比值，该事件的对数几率是</p>
+<p><img src="/2017/11/16/统计学方法-李航-chapter-six/4.png" alt=""><br>对于二项逻辑斯谛回归而言，其对数几率为：<br></p>
         
           <p class="article-more-link">
             <a href="/2017/11/16/统计学方法-李航-chapter-six/#more">Read More</a>
@@ -208,6 +211,10 @@
         <p>这一章的内容比较新吧，之前在西瓜书上面看过决策树，但在这章还是有很多新东西，所以要好好总结下。同时也温习下内容。</p>
 <p>每次写博客最不喜欢写公式了，看了几个博客也没能让hexo完美支持数学公式，所以写了公式然后截图，博客还很简陋，有时间再搭下，加点功能…</p>
 <h3 id="1-1-特征选择"><a href="#1-1-特征选择" class="headerlink" title="1.1 特征选择"></a>1.1 特征选择</h3><p>在每一个非叶节点都是针对特征的一个判断，那么在每个非叶节点的特征选择就成为了一个需要考虑的问题。通常特征选择的准则是信息增益或者信息增益比。下面介绍信息增益和信息增益比。<br>在介绍信息增益和信息增益比之前需要介绍下熵和条件熵，熵(entropy)是表示随机变量不确定性的度量。设X是一个取有限个值的离散随机变量，其概率分布为：</p>
+<p><img src="/2017/11/11/统计学方法-李航-chapter-five/7.png" alt=""></p>
+<p>则随机变量X的熵(entropy)定义为,单位通常为bit(nat)：</p>
+<p><img src="/2017/11/11/统计学方法-李航-chapter-five/8.png" alt=""></p>
+<p>条件熵H(Y|X),表示为在X确定的情况下随机变量Y的不确定性(熵)，N为X的取值个数，pi表示当前值的概率,通常采用极大似然法进行估计:<br><img src="/2017/11/11/统计学方法-李航-chapter-five/9.png" alt=""></p>
         
           <p class="article-more-link">
             <a href="/2017/11/11/统计学方法-李航-chapter-five/#more">Read More</a>
@@ -266,7 +273,19 @@
 <h3 id="1-1-朴素贝叶斯的基本公式"><a href="#1-1-朴素贝叶斯的基本公式" class="headerlink" title="1.1 朴素贝叶斯的基本公式"></a>1.1 朴素贝叶斯的基本公式</h3><ul>
 <li><p>X是定义在输入空间的n维的随机向量,Y是定义在输出空间的随机变量,现在样本数量为N的样本集。由P(X,Y)独立同分布产生。朴素贝叶斯通过样本集训练数据学习联合概率分布P(X,Y)。</p>
 </li>
-<li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p></li></ul>
+<li><p>先验概率分布，条件概率分布分别为<br><img src="/2017/11/10/统计学方法-李航-chapter-four/1.png" alt=""></p>
+</li>
+<li><p>朴素贝叶斯假设条件独立性，等于说是用于分类的特征 (即每一维)在类确定的条件下都是条件独立的,那么条件概率分布可以写为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/2.png" alt=""></p>
+<p>接下来进行朴素贝叶斯分类的公式推导，计算后验概率分布：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/3.png" alt=""></p>
+<p>将后验概率值最大的类作为x的类输出，根据贝叶斯定理,后验概率可以写为：</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/7.png" alt=""></p>
+<p>将条件独立时的条件概率分布公式带入后验概率中可以得到</p>
+<p><img src="/2017/11/10/统计学方法-李航-chapter-four/8.png" alt=""></p>
+<p>可以看出分母对所有的Y的情况都是相同的，那么我们就是要求得Ck的值使得（2）中的分子值最大</p>
+</li>
+</ul>
         
           <p class="article-more-link">
             <a href="/2017/11/10/统计学方法-李航-chapter-four/#more">Read More</a>
@@ -327,6 +346,7 @@
 <p>哎，想想自己，保研后过的像个咸鱼一样，是不是不该这么松懈？至少行动要配得上梦想。</p>
 <p>第二章课后习题比较简单，主要做下关于perceptron 算法的summary </p>
 <p>let’s start.</p>
+<h3 id="1-1-Perceptron"><a href="#1-1-Perceptron" class="headerlink" title="1.1 Perceptron"></a>1.1 Perceptron</h3><p><img src="/2017/11/06/统计学方法-李航-chapter-two/1.png" alt=""><br></p>
         
           <p class="article-more-link">
             <a href="/2017/11/06/统计学方法-李航-chapter-two/#more">Read More</a>
@@ -441,7 +461,11 @@
       
         <hr>
 <p><img src="/2017/10/29/Covariance matrix/楼下的猫猫.JPG" alt="楼下的猫猫"></p>
-<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3>
+<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3><p>每次都要忘记这些东西所以记下来==</p>
+<p>对于向量 <strong>a</strong> 和 <strong>b</strong> ,向量乘积定义为:<img src="/2017/10/29/Covariance matrix/27A466BF-B714-4F71-9718-D892C69191CA.png" alt=""></p>
+<p>向量内积的几何解释就是一个向量在另一个向量上的投影的积，也就是同方向的积</p>
+<p>描述了向量间的相关性</p>
+<h3 id="2-PCA中的协方差矩阵"><a href="#2-PCA中的协方差矩阵" class="headerlink" title="2.PCA中的协方差矩阵"></a>2.PCA中的协方差矩阵</h3>
         
           <p class="article-more-link">
             <a href="/2017/10/29/Covariance matrix/#more">Read More</a>

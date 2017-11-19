@@ -54,6 +54,76 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-统计学方法-李航-chapter-seven" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/18/统计学方法-李航-chapter-seven/">统计学方法-chapter seven</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/11/18/统计学方法-李航-chapter-seven/" class="article-date">
+  <time datetime="2017-11-18T05:52:57.000Z" itemprop="datePublished">2017-11-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/统计学习方法-李航/">统计学习方法(李航)</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章好难呐，让人怀疑人生，感觉这本书还是要看第二遍的，勤能补拙，这章公式有100多个….</p>
+<h3 id="1-线性可分支持向量机和硬间隔最大化"><a href="#1-线性可分支持向量机和硬间隔最大化" class="headerlink" title="1. 线性可分支持向量机和硬间隔最大化"></a>1. 线性可分支持向量机和硬间隔最大化</h3><ul>
+<li>函数间隔的定义如下：</li>
+</ul>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/1.png" alt=""><br>​       定义超平面(w,b)和数据集T的函数间隔为超平面关于所有样本点中函数间隔的最小值。</p>
+<ul>
+<li><p>几何间隔的定义如下：</p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/2.png" alt=""></p>
+<p>同理其几何间隔也为最小值。</p>
+</li>
+</ul>
+<p>要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/3.png" alt=""><br>将几何间隔转变为函数间隔，可以得到<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/4.png" alt=""><br>将w,和b可以同比例的变化，可以看出函数间隔的值对约束问题没有实际影响，所以约束问题可以写为：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/5.png" alt=""><br>接下来证明最大间隔分离超平面是唯一的：<br>①存在性：因为数据集线性可分，所以此问题一定存在可行解，因为训练集中既有正例又有负例，所以w的值一定不为0，所以由此可知分离超平面的存在性。</p>
+<p>②唯一性：证明的方法主要是通过假设有两个这样的超平面然后证明这两个超平面是一样的。而且对于每一个超平面正负点一定有满足7.14的点，因为如果不满足超平面就不是最优的，超平面可以一定。<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/6.png" alt=""></p>
+<p>满足7.14式等号成立的点就为支持向量。<br>接下来将7.13，7.14的约束问题转化为无约束问题，对偶学习算法，通过拉格朗日乘子，可以将约束问题转化为无优化问题,先对非拉格朗日乘子求偏导,然后带入进去，再对函数求极小值，公式如下：</p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/7.png" alt=""></p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/8.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/9.png" alt=""><br>从而得到下面的对偶最优化问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/10.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/11.png" alt=""></p>
+<h3 id="2-线性支持向量机和软间隔最大化"><a href="#2-线性支持向量机和软间隔最大化" class="headerlink" title="2. 线性支持向量机和软间隔最大化"></a>2. 线性支持向量机和软间隔最大化</h3><p>并不一定所有的数据集都是线性可分的，所以将硬间隔最大化转化为软间隔最大化，问题变成如下的约束问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/12.png" alt=""><br>同理线性可分支持向量机可以将问题转化为:<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/13.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/14.png" alt=""><br>同理定理7.2有定理7.3<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/15.png" alt=""></p>
+<h3 id="3-非线性支持向量机和核函数"><a href="#3-非线性支持向量机和核函数" class="headerlink" title="3. 非线性支持向量机和核函数"></a>3. 非线性支持向量机和核函数</h3><p>对于核函数这个东西，真的是不太理解啊，现在只会应用，如果这个部分挺重要的，以后就单独研究下，独立写个博客，如果不是很重要就直接拿来用了，核函数简单理解就是将维度映射到更高维也可能是无穷维使得数据可分。</p>
+<p>接下来将如何实现向量机的实现问题，SMO算法要求解如下的对偶问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/16.png" alt=""><br>每次选择两个a作为变量其他的固定，去一个作为变量是不行的，因为由7.99可知，这样每个都是常量值了。j将a1,a2作为变量其他的固定，可以得到优化问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/17.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/18.png" alt=""><br>a1,a2可以用二维空间的图表示为：</p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/19.png" alt=""><br>当y1,y2异号的时候为左图的情况，而且可能左上还有可能有种情况<br>当y1,y2同好的时候为右图情况，而且只有种可能，根据k值不同的大小位置不同而已<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/20.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/21.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/21.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svm-支持向量机/">svm(支持向量机)</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-统计学方法-李航-chapter-six" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     

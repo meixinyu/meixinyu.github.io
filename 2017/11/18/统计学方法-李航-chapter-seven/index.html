@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>统计学方法-chapter seven - Meixiuxiu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一章好难呐，让人怀疑人生，感觉这本书还是要看第二遍的，勤能补拙，这章公式有100多个…. 1. 线性可分支持向量机和硬间隔最大化 函数间隔的定义如下：  ​       定义超平面(w,b)和数据集T的函数间隔为超平面关于所有样本点中函数间隔的最小值。  几何间隔的定义如下：  同理其几何间隔也为最小值。   要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：将几何间隔转变为函数间隔，">
+<meta name="keywords" content="svm(支持向量机)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学方法-chapter seven">
+<meta property="og:url" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/index.html">
+<meta property="og:site_name" content="Meixiuxiu">
+<meta property="og:description" content="这一章好难呐，让人怀疑人生，感觉这本书还是要看第二遍的，勤能补拙，这章公式有100多个…. 1. 线性可分支持向量机和硬间隔最大化 函数间隔的定义如下：  ​       定义超平面(w,b)和数据集T的函数间隔为超平面关于所有样本点中函数间隔的最小值。  几何间隔的定义如下：  同理其几何间隔也为最小值。   要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：将几何间隔转变为函数间隔，">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/5.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/6.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/7.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/8.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/9.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/10.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/11.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/12.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/13.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/14.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/15.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/16.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/17.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/18.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/19.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/20.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/21.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/21.png">
+<meta property="og:updated_time" content="2017-11-19T08:14:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学方法-chapter seven">
+<meta name="twitter:description" content="这一章好难呐，让人怀疑人生，感觉这本书还是要看第二遍的，勤能补拙，这章公式有100多个…. 1. 线性可分支持向量机和硬间隔最大化 函数间隔的定义如下：  ​       定义超平面(w,b)和数据集T的函数间隔为超平面关于所有样本点中函数间隔的最小值。  几何间隔的定义如下：  同理其几何间隔也为最小值。   要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：将几何间隔转变为函数间隔，">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/18/统计学方法-李航-chapter-seven/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("ImAHEPDUTcPakLfndBrcOoKD-gzGzoHsz", "u9JMhMDd0UbR4ob7JBJ2jEQF");</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-统计学方法-李航-chapter-seven" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      统计学方法-chapter seven
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/11/18/统计学方法-李航-chapter-seven/" class="article-date">
+  <time datetime="2017-11-18T05:52:57.000Z" itemprop="datePublished">2017-11-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/统计学习方法-李航/">统计学习方法(李航)</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章好难呐，让人怀疑人生，感觉这本书还是要看第二遍的，勤能补拙，这章公式有100多个….</p>
+<h3 id="1-线性可分支持向量机和硬间隔最大化"><a href="#1-线性可分支持向量机和硬间隔最大化" class="headerlink" title="1. 线性可分支持向量机和硬间隔最大化"></a>1. 线性可分支持向量机和硬间隔最大化</h3><ul>
+<li>函数间隔的定义如下：</li>
+</ul>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/1.png" alt=""><br>​       定义超平面(w,b)和数据集T的函数间隔为超平面关于所有样本点中函数间隔的最小值。</p>
+<ul>
+<li><p>几何间隔的定义如下：</p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/2.png" alt=""></p>
+<p>同理其几何间隔也为最小值。</p>
+</li>
+</ul>
+<p>要求得最大间隔分离超平面,这个问题可以表示为下面的约束问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/3.png" alt=""><br>将几何间隔转变为函数间隔，可以得到<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/4.png" alt=""><br>将w,和b可以同比例的变化，可以看出函数间隔的值对约束问题没有实际影响，所以约束问题可以写为：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/5.png" alt=""><br>接下来证明最大间隔分离超平面是唯一的：<br>①存在性：因为数据集线性可分，所以此问题一定存在可行解，因为训练集中既有正例又有负例，所以w的值一定不为0，所以由此可知分离超平面的存在性。</p>
+<p>②唯一性：证明的方法主要是通过假设有两个这样的超平面然后证明这两个超平面是一样的。而且对于每一个超平面正负点一定有满足7.14的点，因为如果不满足超平面就不是最优的，超平面可以一定。<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/6.png" alt=""></p>
+<p>满足7.14式等号成立的点就为支持向量。<br>接下来将7.13，7.14的约束问题转化为无约束问题，对偶学习算法，通过拉格朗日乘子，可以将约束问题转化为无优化问题,先对非拉格朗日乘子求偏导,然后带入进去，再对函数求极小值，公式如下：</p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/7.png" alt=""></p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/8.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/9.png" alt=""><br>从而得到下面的对偶最优化问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/10.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/11.png" alt=""></p>
+<h3 id="2-线性支持向量机和软间隔最大化"><a href="#2-线性支持向量机和软间隔最大化" class="headerlink" title="2. 线性支持向量机和软间隔最大化"></a>2. 线性支持向量机和软间隔最大化</h3><p>并不一定所有的数据集都是线性可分的，所以将硬间隔最大化转化为软间隔最大化，问题变成如下的约束问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/12.png" alt=""><br>同理线性可分支持向量机可以将问题转化为:<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/13.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/14.png" alt=""><br>同理定理7.2有定理7.3<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/15.png" alt=""></p>
+<h3 id="3-非线性支持向量机和核函数"><a href="#3-非线性支持向量机和核函数" class="headerlink" title="3. 非线性支持向量机和核函数"></a>3. 非线性支持向量机和核函数</h3><p>对于核函数这个东西，真的是不太理解啊，现在只会应用，如果这个部分挺重要的，以后就单独研究下，独立写个博客，如果不是很重要就直接拿来用了，核函数简单理解就是将维度映射到更高维也可能是无穷维使得数据可分。</p>
+<p>接下来将如何实现向量机的实现问题，SMO算法要求解如下的对偶问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/16.png" alt=""><br>每次选择两个a作为变量其他的固定，去一个作为变量是不行的，因为由7.99可知，这样每个都是常量值了。j将a1,a2作为变量其他的固定，可以得到优化问题：<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/17.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/18.png" alt=""><br>a1,a2可以用二维空间的图表示为：</p>
+<p><img src="/2017/11/18/统计学方法-李航-chapter-seven/19.png" alt=""><br>当y1,y2异号的时候为左图的情况，而且可能左上还有可能有种情况<br>当y1,y2同好的时候为右图情况，而且只有种可能，根据k值不同的大小位置不同而已<br><img src="/2017/11/18/统计学方法-李航-chapter-seven/20.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/21.png" alt=""><br><img src="/2017/11/18/统计学方法-李航-chapter-seven/21.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svm-支持向量机/">svm(支持向量机)</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/16/统计学方法-李航-chapter-six/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">统计学方法-chapter six&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Meixinyu&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+    title = $('.article-title').text().trim();
+    var query=new AV.Query(Counter);
+    //use url as unique idnetfication
+    query.equalTo("url",url);
+    query.find({
+        success: function(results){
+            if(results.length>0)
+            {
+                var counter=results[0];
+                counter.fetchWhenSave(true); //get recent result
+                counter.increment("time");
+                counter.save();
+            }
+            else
+            {
+                var newcounter=new Counter();
+                newcounter.set("title",title);
+                newcounter.set("url",url);
+                newcounter.set("time",1);
+                newcounter.save(null,{
+                    success: function(newcounter){
+                    //alert('New object created');
+                    },
+                    error: function(newcounter,error){
+                    alert('Failed to create');
+                    }
+                    });
+            }
+        },
+        error: function(error){
+            //find null is not a error
+            alert('Error:'+error.code+" "+error.message);
+        }
+    });
+}
+$(function(){
+    var Counter=AV.Object.extend("Counter");
+    //only increse visit counting when intering a page
+    if ($('.article-title').length == 1)
+       addCount(Counter);
+    var query=new AV.Query(Counter);
+    query.descending("time");
+    // the sum of popular posts
+    query.limit(10); 
+    query.find({
+        success: function(results){
+                for(var i=0;i<results.length;i++)    
+                {
+                    var counter=results[i];
+                    title=counter.get("title");
+                    url=counter.get("url");
+                    time=counter.get("time");
+                    // add to the popularlist widget
+                    showcontent=title+" ("+time+")";
+                    //notice the "" in href
+                    $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                }
+            },
+        error: function(error){
+            alert("Error:"+error.code+" "+error.message);
+        }
+        }
+    )
+    });
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -3,27 +3,31 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>cs231-lecture-10 - Meixiuxiu</title>
+  <title>cs231-lecture-11 - Meixiuxiu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第三个part,笔记笔记…….  At evety step, the state is related to the old state and the input vector at this stepNotice: the same function and the same set of parameters are used at every time step.">
-<meta name="keywords" content="RNN">
+  <meta name="description" content="####1.Semantic Segmentation ①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches②Fully Convolutional problem: convolutions at original image res">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs231-lecture-10">
-<meta property="og:url" content="http://yoursite.com/2018/01/21/cs231-lecture-10/index.html">
+<meta property="og:title" content="cs231-lecture-11">
+<meta property="og:url" content="http://yoursite.com/2018/01/23/cs231-lecture-11/index.html">
 <meta property="og:site_name" content="Meixiuxiu">
-<meta property="og:description" content="第三个part,笔记笔记…….  At evety step, the state is related to the old state and the input vector at this stepNotice: the same function and the same set of parameters are used at every time step.">
+<meta property="og:description" content="####1.Semantic Segmentation ①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches②Fully Convolutional problem: convolutions at original image res">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/6.png">
-<meta property="og:updated_time" content="2018-01-23T11:31:22.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/Semantic_Segmentation.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/10.png">
+<meta property="og:updated_time" content="2018-01-23T12:27:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs231-lecture-10">
-<meta name="twitter:description" content="第三个part,笔记笔记…….  At evety step, the state is related to the old state and the input vector at this stepNotice: the same function and the same set of parameters are used at every time step.">
-<meta name="twitter:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/1.png">
+<meta name="twitter:title" content="cs231-lecture-11">
+<meta name="twitter:description" content="####1.Semantic Segmentation ①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches②Fully Convolutional problem: convolutions at original image res">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/23/cs231-lecture-11/Semantic_Segmentation.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,7 +69,7 @@
     </div>
   </div>
 </header>
-    <section id="main" class="outer"><article id="post-cs231-lecture-10" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="post-cs231-lecture-11" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -73,15 +77,15 @@
         
   
     <h1 class="article-title" itemprop="name">
-      cs231-lecture-10
+      cs231-lecture-11
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/2018/01/21/cs231-lecture-10/" class="article-date">
-  <time datetime="2018-01-21T06:50:10.000Z" itemprop="datePublished">2018-01-21</time>
+      <a href="/2018/01/23/cs231-lecture-11/" class="article-date">
+  <time datetime="2018-01-23T11:42:35.000Z" itemprop="datePublished">2018-01-23</time>
 </a>
       
   <div class="article-category">
@@ -92,16 +96,14 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>第三个part,笔记笔记…….</p>
-<p><img src="/2018/01/21/cs231-lecture-10/1.png" alt="1"></p>
-<p>At evety step, the state is related to the old state and the input vector at this step<br>Notice: the same function and the same set of parameters are used at every time step.</p>
-<a id="more"></a>
-<p><img src="/2018/01/21/cs231-lecture-10/2.png" alt="2"><br><img src="/2018/01/21/cs231-lecture-10/3.png" alt="3"></p>
-<p><img src="/2018/01/21/cs231-lecture-10/4.png" alt="4"><br>change vanilla RNN to LSTM RNN<br><img src="/2018/01/21/cs231-lecture-10/5.png" alt="5"></p>
-<p><img src="/2018/01/21/cs231-lecture-10/6.png" alt="6"></p>
-<p>Notes: </p>
-<p>1.最开始的h0可以是通过image的features(by cov_net)*Wh得到</p>
-<p>2.使用LSTM的原因是在Vanilla RNN backward 时，W的反复乘积容易造成上下溢，LSTM要计算dc则很简单，和resdual_net的思想很相似，但是对h0来说依然容易上下溢</p>
+        <p>####1.Semantic Segmentation</p>
+<p><img src="/2018/01/23/cs231-lecture-11/Semantic_Segmentation.png" alt="Semantic_Segmentation"><br>①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches<br>②Fully Convolutional problem: convolutions at original image resolution will be very expensive<br><img src="/2018/01/23/cs231-lecture-11/1.png" alt=""><br>solution: use downsampling and upsampling inside the network </p>
+<h5 id="downsampling-pooling-strided-convolution"><a href="#downsampling-pooling-strided-convolution" class="headerlink" title="downsampling : pooling, strided, convolution"></a><strong>downsampling : pooling, strided, convolution</strong></h5><p><strong>upsampling:</strong><br><img src="/2018/01/23/cs231-lecture-11/2.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/3.png" alt=""><br><strong>Transpose Convolution</strong><br><img src="/2018/01/23/cs231-lecture-11/4.png" alt=""></p>
+<h4 id="2-Classification-Localizaiton"><a href="#2-Classification-Localizaiton" class="headerlink" title="2.Classification Localizaiton"></a>2.Classification Localizaiton</h4><p><img src="/2018/01/23/cs231-lecture-11/5.png" alt=""></p>
+<p>​    Where in addition to a class label you also want to draw a box or perhaps several boxes in the image . You have fix number of objects that you are looking for. It can be applied to the things like pose recognition.</p>
+<h4 id="3-Object-Detection"><a href="#3-Object-Detection" class="headerlink" title="3.Object Detection"></a>3.Object Detection</h4><p>​    where you start with the fixed set of category labels. The task is to draw a boxes around every instance of those objects<br><a href="https://arxiv.org/pdf/1311.2524.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1311.2524.pdf</a></p>
+<h5 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h5><p><strong>find “blobby” image regions(Interest) that are likely to contain objects</strong><br><img src="/2018/01/23/cs231-lecture-11/6.png" alt=""><br>different regions of Interest: Warped image Interest<br><img src="/2018/01/23/cs231-lecture-11/7.png" alt=""></p>
+<h5 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h5><p><img src="/2018/01/23/cs231-lecture-11/8.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/9.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/10.png" alt=""></p>
 
       
     </div>
@@ -109,8 +111,6 @@
     
       <footer class="article-footer">
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li></ul>
-
       </footer>
     
   </div>
@@ -118,17 +118,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/23/cs231-lecture-11/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-title"><span>&lt;</span>&nbsp;
-        
-          cs231-lecture-11
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/25/AlexNet/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">AlexNet&nbsp;<span>&gt;</span></div>
+    <a href="/2018/01/21/cs231-lecture-10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cs231-lecture-10&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>

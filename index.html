@@ -54,6 +54,58 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-cs231-lecture-11" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/23/cs231-lecture-11/">cs231-lecture-11</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2018/01/23/cs231-lecture-11/" class="article-date">
+  <time datetime="2018-01-23T11:42:35.000Z" itemprop="datePublished">2018-01-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CS231/">CS231</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####1.Semantic Segmentation</p>
+<p><img src="/2018/01/23/cs231-lecture-11/Semantic_Segmentation.png" alt="Semantic_Segmentation"><br>①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches<br>②Fully Convolutional problem: convolutions at original image resolution will be very expensive<br><img src="/2018/01/23/cs231-lecture-11/1.png" alt=""><br>solution: use downsampling and upsampling inside the network </p>
+<h5 id="downsampling-pooling-strided-convolution"><a href="#downsampling-pooling-strided-convolution" class="headerlink" title="downsampling : pooling, strided, convolution"></a><strong>downsampling : pooling, strided, convolution</strong></h5><p><strong>upsampling:</strong><br><img src="/2018/01/23/cs231-lecture-11/2.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/3.png" alt=""><br><strong>Transpose Convolution</strong><br><img src="/2018/01/23/cs231-lecture-11/4.png" alt=""></p>
+<h4 id="2-Classification-Localizaiton"><a href="#2-Classification-Localizaiton" class="headerlink" title="2.Classification Localizaiton"></a>2.Classification Localizaiton</h4><p><img src="/2018/01/23/cs231-lecture-11/5.png" alt=""></p>
+<p>​    Where in addition to a class label you also want to draw a box or perhaps several boxes in the image . You have fix number of objects that you are looking for. It can be applied to the things like pose recognition.</p>
+<h4 id="3-Object-Detection"><a href="#3-Object-Detection" class="headerlink" title="3.Object Detection"></a>3.Object Detection</h4><p>​    where you start with the fixed set of category labels. The task is to draw a boxes around every instance of those objects<br><a href="https://arxiv.org/pdf/1311.2524.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1311.2524.pdf</a></p>
+<h5 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h5><p><strong>find “blobby” image regions(Interest) that are likely to contain objects</strong><br><img src="/2018/01/23/cs231-lecture-11/6.png" alt=""><br>different regions of Interest: Warped image Interest<br><img src="/2018/01/23/cs231-lecture-11/7.png" alt=""></p>
+<h5 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h5><p><img src="/2018/01/23/cs231-lecture-11/8.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/9.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/10.png" alt=""></p>
+
+      
+    </div>
+    
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-cs231-lecture-10" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -583,66 +635,9 @@
 
 
     
-      <article id="post-Covariance matrix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/29/Covariance matrix/">浅谈PCA中的Covariance matrix</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2017/10/29/Covariance matrix/" class="article-date">
-  <time datetime="2017-10-29T10:46:01.000Z" itemprop="datePublished">2017-10-29</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/machine-learning/">machine learning</a><span>></span><a class="article-category-link" href="/categories/machine-learning/斯坦福机器学习公开课/">斯坦福机器学习公开课</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p><img src="/2017/10/29/Covariance matrix/楼下的猫猫.JPG" alt="楼下的猫猫"></p>
-<h3 id="1-向量乘积的几何意义"><a href="#1-向量乘积的几何意义" class="headerlink" title="1.向量乘积的几何意义"></a>1.向量乘积的几何意义</h3><p>每次都要忘记这些东西所以记下来==</p>
-<p>对于向量 <strong>a</strong> 和 <strong>b</strong> ,向量乘积定义为:<img src="/2017/10/29/Covariance matrix/27A466BF-B714-4F71-9718-D892C69191CA.png" alt=""></p>
-<p>向量内积的几何解释就是一个向量在另一个向量上的投影的积，也就是同方向的积</p>
-<p>描述了向量间的相关性</p>
-<h3 id="2-PCA中的协方差矩阵"><a href="#2-PCA中的协方差矩阵" class="headerlink" title="2.PCA中的协方差矩阵"></a>2.PCA中的协方差矩阵</h3>
-        
-          <p class="article-more-link">
-            <a href="/2017/10/29/Covariance matrix/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linear-algebra/">Linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PCA/">PCA</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Далее &raquo;</a>
+      </nav>
     </section>
     <footer id="footer">
   

@@ -18,7 +18,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/3.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/4.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/5.png">
-<meta property="og:updated_time" content="2018-01-21T08:02:02.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/cs231-lecture-10/6.png">
+<meta property="og:updated_time" content="2018-01-23T11:31:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231-lecture-10">
 <meta name="twitter:description" content="第三个part,笔记笔记…….  At evety step, the state is related to the old state and the input vector at this stepNotice: the same function and the same set of parameters are used at every time step.">
@@ -97,6 +98,10 @@
 <a id="more"></a>
 <p><img src="/2018/01/21/cs231-lecture-10/2.png" alt="2"><br><img src="/2018/01/21/cs231-lecture-10/3.png" alt="3"></p>
 <p><img src="/2018/01/21/cs231-lecture-10/4.png" alt="4"><br>change vanilla RNN to LSTM RNN<br><img src="/2018/01/21/cs231-lecture-10/5.png" alt="5"></p>
+<p><img src="/2018/01/21/cs231-lecture-10/6.png" alt="6"></p>
+<p>Notes: </p>
+<p>1.最开始的h0可以是通过image的features(by cov_net)*Wh得到</p>
+<p>2.使用LSTM的原因是在Vanilla RNN backward 时，W的反复乘积容易造成上下溢，LSTM要计算dc则很简单，和resdual_net的思想很相似，但是对h0来说依然容易上下溢</p>
 
       
     </div>

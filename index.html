@@ -81,15 +81,12 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####1.Semantic Segmentation</p>
-<p><img src="/2018/01/23/cs231-lecture-11/Semantic_Segmentation.png" alt="Semantic_Segmentation"><br>①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches<br>②Fully Convolutional problem: convolutions at original image resolution will be very expensive<br><img src="/2018/01/23/cs231-lecture-11/1.png" alt=""><br>solution: use downsampling and upsampling inside the network </p>
-<h5 id="downsampling-pooling-strided-convolution"><a href="#downsampling-pooling-strided-convolution" class="headerlink" title="downsampling : pooling, strided, convolution"></a><strong>downsampling : pooling, strided, convolution</strong></h5><p><strong>upsampling:</strong><br><img src="/2018/01/23/cs231-lecture-11/2.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/3.png" alt=""><br><strong>Transpose Convolution</strong><br><img src="/2018/01/23/cs231-lecture-11/4.png" alt=""></p>
-<h4 id="2-Classification-Localizaiton"><a href="#2-Classification-Localizaiton" class="headerlink" title="2.Classification Localizaiton"></a>2.Classification Localizaiton</h4><p><img src="/2018/01/23/cs231-lecture-11/5.png" alt=""></p>
-<p>​    Where in addition to a class label you also want to draw a box or perhaps several boxes in the image . You have fix number of objects that you are looking for. It can be applied to the things like pose recognition.</p>
-<h4 id="3-Object-Detection"><a href="#3-Object-Detection" class="headerlink" title="3.Object Detection"></a>3.Object Detection</h4><p>​    where you start with the fixed set of category labels. The task is to draw a boxes around every instance of those objects<br><a href="https://arxiv.org/pdf/1311.2524.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1311.2524.pdf</a></p>
-<h5 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h5><p><strong>find “blobby” image regions(Interest) that are likely to contain objects</strong><br><img src="/2018/01/23/cs231-lecture-11/6.png" alt=""><br>different regions of Interest: Warped image Interest<br><img src="/2018/01/23/cs231-lecture-11/7.png" alt=""></p>
-<h5 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h5><p><img src="/2018/01/23/cs231-lecture-11/8.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/9.png" alt=""><br><img src="/2018/01/23/cs231-lecture-11/10.png" alt=""></p>
-
+        <h4 id="1-Semantic-Segmentation"><a href="#1-Semantic-Segmentation" class="headerlink" title="1.Semantic Segmentation"></a>1.Semantic Segmentation</h4><p><img src="/2018/01/23/cs231-lecture-11/Semantic_Segmentation.png" alt="Semantic_Segmentation"><br>①Sliding Window(bad way) problem: very inefficient ! Not reusing shared features between overlapping patches<br>②Fully Convolutional problem: convolutions at original image resolution will be very expensive<br></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/01/23/cs231-lecture-11/#more">Read More</a>
+          </p>
+        
       
     </div>
     
@@ -636,7 +633,7 @@
 
     
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Далее &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
       </nav>
     </section>
     <footer id="footer">

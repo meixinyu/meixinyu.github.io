@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>cs231-lecture-12 - Meixiuxiu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Topic : Visualizing and Understanding1. Last Layer : Dimensionality Reductionhttps://cs.stanford.edu/people/karpathy/cnnembed/ FC feature vectors  to 2 dimensions by reducing dimensionality(PCA or t-S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs231-lecture-12">
+<meta property="og:url" content="http://yoursite.com/2018/01/23/cs231-lecture-12/index.html">
+<meta property="og:site_name" content="Meixiuxiu">
+<meta property="og:description" content="Topic : Visualizing and Understanding1. Last Layer : Dimensionality Reductionhttps://cs.stanford.edu/people/karpathy/cnnembed/ FC feature vectors  to 2 dimensions by reducing dimensionality(PCA or t-S">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/11.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/12.png">
+<meta property="og:updated_time" content="2018-01-24T14:06:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cs231-lecture-12">
+<meta name="twitter:description" content="Topic : Visualizing and Understanding1. Last Layer : Dimensionality Reductionhttps://cs.stanford.edu/people/karpathy/cnnembed/ FC feature vectors  to 2 dimensions by reducing dimensionality(PCA or t-S">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("ImAHEPDUTcPakLfndBrcOoKD-gzGzoHsz", "u9JMhMDd0UbR4ob7JBJ2jEQF");</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-cs231-lecture-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cs231-lecture-12
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2018/01/23/cs231-lecture-12/" class="article-date">
+  <time datetime="2018-01-23T13:47:16.000Z" itemprop="datePublished">2018-01-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CS231/">CS231</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Topic-Visualizing-and-Understanding"><a href="#Topic-Visualizing-and-Understanding" class="headerlink" title="Topic : Visualizing and Understanding"></a>Topic : Visualizing and Understanding</h3><h4 id="1-Last-Layer-Dimensionality-Reduction"><a href="#1-Last-Layer-Dimensionality-Reduction" class="headerlink" title="1. Last Layer : Dimensionality Reduction"></a>1. Last Layer : Dimensionality Reduction</h4><p><img src="/2018/01/23/cs231-lecture-12/1.png" alt=""><br><a href="https://cs.stanford.edu/people/karpathy/cnnembed/" target="_blank" rel="external">https://cs.stanford.edu/people/karpathy/cnnembed/</a></p>
+<p>FC feature vectors  to 2 dimensions by reducing dimensionality(PCA or t-SNE)<br>show the 2 dimensions with original images<br><a id="more"></a></p>
+<h4 id="2-Saliency-Maps"><a href="#2-Saliency-Maps" class="headerlink" title="2. Saliency Maps"></a>2. Saliency Maps</h4><p><strong>papers:</strong></p>
+<p><em>Zeiler and Fergus, “Visualizing and Understanding Convolutional Networks”, ECCV 2014</em><br><em>Simonyan, Vedaldi, and Zisserman, “Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps”, ICLR Workshop 2014.</em><br><em>Figures copyright Karen Simonyan, Andrea Vedaldi, and Andrew Zisserman, 2014; reproduced with permission.</em></p>
+<p><img src="/2018/01/23/cs231-lecture-12/2.png" alt=""><br>….没太懂这部分<br>find the part of an image that a neuron responds to max the<br>neuron value</p>
+<h4 id="3-Visualizing-CNN-features-Gradient-Ascent"><a href="#3-Visualizing-CNN-features-Gradient-Ascent" class="headerlink" title="3. Visualizing CNN features: Gradient Ascent"></a>3. Visualizing CNN features: Gradient Ascent</h4><p><img src="/2018/01/23/cs231-lecture-12/3.png" alt=""><br><img src="/2018/01/23/cs231-lecture-12/4.png" alt=""><br>better regularizer: Penalize L2 norm of image; also during optimization periodically<br>(1) gaussian blur image<br>(2) clip pixels with small values to 0<br>(3) clip pixels with small gradients to 0</p>
+<p>…..也不懂其中的原因看论文吧</p>
+<p><em>Yosinski et al, “Understanding Neural Networks Through Deep Visualization”, ICML DL Workshop 2014.</em></p>
+<p><em>Figure copyright Jason Yosinski, Jeff Clune, Anh Nguyen, Thomas Fuchs, and Hod Lipson, 2014. Reproduced with permission.</em></p>
+<p><img src="/2018/01/23/cs231-lecture-12/5.png" alt=""></p>
+<h4 id="4-Fooling-Images-愚弄图像"><a href="#4-Fooling-Images-愚弄图像" class="headerlink" title="4. Fooling Images (愚弄图像)"></a>4. Fooling Images (愚弄图像)</h4><p><img src="/2018/01/23/cs231-lecture-12/6.png" alt=""><br>you tell the network to change the elephant picture to koala picture . however the picture may keep the same as elephant picture to be classified as a koala bear. - lan goodfellow</p>
+<h4 id="5-DeepDream"><a href="#5-DeepDream" class="headerlink" title="5. DeepDream"></a>5. DeepDream</h4><p><img src="/2018/01/23/cs231-lecture-12/7.png" alt=""></p>
+<h4 id="6-Feature-Inversion-特征反演"><a href="#6-Feature-Inversion-特征反演" class="headerlink" title="6. Feature Inversion(特征反演)"></a>6. Feature Inversion(特征反演)</h4><p><img src="/2018/01/23/cs231-lecture-12/8.png" alt=""><br>rather than using gradient ascent, we make the generated picture’s feature vector match the given feature vector</p>
+<p>Total Variation regularizer: 全变差正则化</p>
+<h4 id="7-Texture-Synthesis-纹理合成"><a href="#7-Texture-Synthesis-纹理合成" class="headerlink" title="7. Texture Synthesis(纹理合成)"></a>7. Texture Synthesis(纹理合成)</h4><p>①Nearest Neighbor<br>②Gram Matrix<br>pull out the tensor value C <em> H </em> W<br>input : C <em> H </em> W<br>product : C * C<br><img src="/2018/01/23/cs231-lecture-12/9.png" alt=""><br><img src="/2018/01/23/cs231-lecture-12/10.png" alt=""></p>
+<h4 id="8-Style-Transfer"><a href="#8-Style-Transfer" class="headerlink" title="8.Style Transfer"></a>8.Style Transfer</h4><p>use style and content image pass them into your network to compute your gram matrics and your features. Now you will initialize your out image with som random noise. Go forward, compute your losses , Go backward, compute your gradients on the image. Doing gradient ascent on the pixel of your generated image <img src="/2018/01/23/cs231-lecture-12/11.png" alt=""><br>resizing style image before running style transfer algorithm can transfer different types of features </p>
+<p>Fast Style Transfer<br><img src="/2018/01/23/cs231-lecture-12/12.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/23/cs231-lecture-11/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cs231-lecture-11&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Meixinyu&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+    title = $('.article-title').text().trim();
+    var query=new AV.Query(Counter);
+    //use url as unique idnetfication
+    query.equalTo("url",url);
+    query.find({
+        success: function(results){
+            if(results.length>0)
+            {
+                var counter=results[0];
+                counter.fetchWhenSave(true); //get recent result
+                counter.increment("time");
+                counter.save();
+            }
+            else
+            {
+                var newcounter=new Counter();
+                newcounter.set("title",title);
+                newcounter.set("url",url);
+                newcounter.set("time",1);
+                newcounter.save(null,{
+                    success: function(newcounter){
+                    //alert('New object created');
+                    },
+                    error: function(newcounter,error){
+                    alert('Failed to create');
+                    }
+                    });
+            }
+        },
+        error: function(error){
+            //find null is not a error
+            alert('Error:'+error.code+" "+error.message);
+        }
+    });
+}
+$(function(){
+    var Counter=AV.Object.extend("Counter");
+    //only increse visit counting when intering a page
+    if ($('.article-title').length == 1)
+       addCount(Counter);
+    var query=new AV.Query(Counter);
+    query.descending("time");
+    // the sum of popular posts
+    query.limit(10); 
+    query.find({
+        success: function(results){
+                for(var i=0;i<results.length;i++)    
+                {
+                    var counter=results[i];
+                    title=counter.get("title");
+                    url=counter.get("url");
+                    time=counter.get("time");
+                    // add to the popularlist widget
+                    showcontent=title+" ("+time+")";
+                    //notice the "" in href
+                    $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                }
+            },
+        error: function(error){
+            alert("Error:"+error.code+" "+error.message);
+        }
+        }
+    )
+    });
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

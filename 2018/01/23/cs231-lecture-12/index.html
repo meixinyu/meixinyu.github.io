@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/10.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/11.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/23/cs231-lecture-12/12.png">
-<meta property="og:updated_time" content="2018-01-31T03:17:34.000Z">
+<meta property="og:updated_time" content="2018-01-31T08:40:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231-lecture-12">
 <meta name="twitter:description" content="Topic : Visualizing and Understanding1. Last Layer : Dimensionality Reductionhttps://cs.stanford.edu/people/karpathy/cnnembed/ FC feature vectors  to 2 dimensions by reducing dimensionality(PCA or t-S">
@@ -104,7 +104,8 @@
 <p><img src="/2018/01/23/cs231-lecture-12/2.png" alt=""><br>….没太懂这部分<br>find the part of an image that a neuron responds to max the<br>neuron value</p>
 <p>A <strong>saliency map</strong> tells us the degree to which each pixel in the image affects the classification score for that image. To compute it, we compute the gradient of the unnormalized score corresponding to the correct class (which is a scalar) with respect to the pixels of the image. If the image has shape <code>(H, W, 3)</code> then this gradient will also have shape <code>(H, W, 3)</code>; for each pixel in the image, this gradient tells us the amount by which the classification score will change if the pixel changes by a small amount. To compute the saliency map, we take the absolute value of this gradient, then take the maximum value over the 3 input channels; the final saliency map thus has shape <code>(H, W)</code> and all entries are nonnegative.</p>
 <p>You will need to use the <code>model.classifier</code> Tensor containing the scores for each input, and will need to feed in values for the <code>model.image</code> and <code>model.labels</code> placeholder when evaluating the gradient. Open the file <code>cs231n/classifiers/squeezenet.py</code> and read the documentation to make sure you understand how to use the model. For example usage, you can see the <code>loss</code> attribute.</p>
-<h4 id="3-Visualizing-CNN-features-Gradient-Ascent"><a href="#3-Visualizing-CNN-features-Gradient-Ascent" class="headerlink" title="3. Visualizing CNN features: Gradient Ascent"></a>3. Visualizing CNN features: Gradient Ascent</h4><p><img src="/2018/01/23/cs231-lecture-12/3.png" alt=""><br><img src="/2018/01/23/cs231-lecture-12/4.png" alt=""><br>better regularizer: Penalize L2 norm of image; also during optimization periodically<br>(1) gaussian blur image<br>(2) clip pixels with small values to 0<br>(3) clip pixels with small gradients to 0</p>
+<h4 id="3-Visualizing-CNN-features-Gradient-Ascent"><a href="#3-Visualizing-CNN-features-Gradient-Ascent" class="headerlink" title="3. Visualizing CNN features: Gradient Ascent"></a>3. Visualizing CNN features: Gradient Ascent</h4><p><img src="/2018/01/23/cs231-lecture-12/3.png" alt=""><br><img src="/2018/01/23/cs231-lecture-12/4.png" alt=""><br>选择一张要进行fooling的image，通过neural network之后，得到想要分类的score，然后对此score对image进行gradient，此时更新image，因为score是求max所以每次更新是加上当前变化值</p>
+<p>better regularizer: Penalize L2 norm of image; also during optimization periodically<br>(1) gaussian blur image<br>(2) clip pixels with small values to 0<br>(3) clip pixels with small gradients to 0</p>
 <p>…..也不懂其中的原因看论文吧</p>
 <p><em>Yosinski et al, “Understanding Neural Networks Through Deep Visualization”, ICML DL Workshop 2014.</em></p>
 <p><em>Figure copyright Jason Yosinski, Jeff Clune, Anh Nguyen, Thomas Fuchs, and Hod Lipson, 2014. Reproduced with permission.</em></p>

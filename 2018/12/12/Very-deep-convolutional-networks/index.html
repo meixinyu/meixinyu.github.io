@@ -14,7 +14,7 @@
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://yoursite.com/2018/12/12/Very-deep-convolutional-networks/屏幕快照%202018-12-12%20下午8.59.37.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/12/Very-deep-convolutional-networks/屏幕快照%202018-12-12%20下午9.00.52.png">
-<meta property="og:updated_time" content="2018-12-12T13:12:40.000Z">
+<meta property="og:updated_time" content="2018-12-12T13:17:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Very_deep_convolutional_networks">
 <meta name="twitter:description" content="VERY DEEP CONVOLUTIONAL NETWORKS (VGG)1.Vgg分析了为什么小的receptive field相对于大的receptive field要更好。小的receptive field参数更少且能够具有很好的性能。 2.Vgg没有使用normalization，因为发现在层数较浅使用normalization性能没有增肌 3.比较不同模型结构及其效果">
@@ -91,8 +91,8 @@
 <p>2.Vgg没有使用normalization，因为发现在层数较浅使用normalization性能没有增肌</p>
 <p>3.比较不同模型结构及其效果</p>
 <a id="more"></a>
-<p><img src="/2018/12/12/Very-deep-convolutional-networks/屏幕快照 2018-12-12 下午8.59.37.png" alt="屏幕快照 2018-12-12 下午8.59.37"></p>
-<p><img src="/2018/12/12/Very-deep-convolutional-networks/屏幕快照 2018-12-12 下午9.00.52.png" alt="屏幕快照 2018-12-12 下午9.00.52"></p>
+<p><img src="/2018/12/12/Very-deep-convolutional-networks/屏幕快照 2018-12-12 下午8.59.37.png" alt=""></p>
+<p><img src="/2018/12/12/Very-deep-convolutional-networks/屏幕快照 2018-12-12 下午9.00.52.png" alt=""></p>
 <p>经过一次max pooling就把filters翻倍</p>
 <p>4.分析了crop、dense、multi-scale evaluation对结果的影响，crop就是对图像进行随机裁剪，虽然在训练过程中图像的大小必须是相同搞的，但是在测试的过程中，可以使用不同大小的测试集图片，因为可以将全连接层转化为卷积层，然后再经过average pooling就能够进行计算。multi-scale evaluation是指使用不同大小的测试集图像进行测试，然后取他们的平均score。dense利用fcn的思想，将原图直接送到网络进行预测，将最后的全连接层改为1x1的卷积，这样最后可以得出一个预测的score map，再对结果求平均</p>
 
@@ -110,8 +110,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/05/26/Mathematical-statistics-and-Data-analysis-chapter-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">&nbsp;<span>&gt;</span></div>
+    <a href="/2018/01/23/cs231-lecture-12/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cs231-lecture-12&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>
